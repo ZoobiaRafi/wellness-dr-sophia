@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8 px-3">
                     <h4>Winter Skin Care: Protecting and Nourishing Your Skin During the Cold Months</h4>
-                    <img src="/assets/images/blog-detail-1.png" alt="Nourishing" class="img-top img-fluid">
+                    <img src="/assets/images/blog-detail-1.webp" alt="Nourishing" class="img-top img-fluid">
                     <p class="para-text">
                         Winter can wreak havoc with our skin. The harsh cold winds and central heating can leave the
                         skin dull, dry and therefore oily as it tries to counteract dryness with excessive oil
@@ -42,7 +42,7 @@
                         fresh and glowing.
                     </p>
                     <h5>Hydration</h5>
-                    <img src="/assets/images/blog-detail-2.png" alt="Nourishing" class="img-top img-fluid">
+                    <img src="/assets/images/blog-detail-2.webp" alt="Nourishing" class="img-top img-fluid">
                     <p class="para-text">Since we’re not as hot and we’re not as noticeably parched in the winter
                         months compared to the summer, we often don’t drink enough water. It’s essential to remember
                         to do this, and try to eat water-dense foods like grapefruit, broccoli, tomatoes, bell
@@ -59,7 +59,7 @@
                         your diet during the winter, says Dr Sophia.
                     </p>
                     <h5>Vitamin c</h5>
-                    <img src="/assets/images/blog-detail-3.png" alt="Nourishing" class="img-top img-fluid">
+                    <img src="/assets/images/blog-detail-3.webp" alt="Nourishing" class="img-top img-fluid">
                     <p class="para-text">Vitamin C is a science-backed topical solution that helps slow down the
                         signs of early skin aging. It also helps to improve the appearance of wrinkles, dark spots,
                         and acne and helps to brighten dull skin – perfect for the winter.</p>
@@ -74,7 +74,7 @@
                         better than cure says Dr Sophia.
                     </p>
                     <h5>Retinoids</h5>
-                    <img src="/assets/images/blog-detail-4.png" alt="Nourishing" class="img-top img-fluid">
+                    <img src="/assets/images/blog-detail-4.webp" alt="Nourishing" class="img-top img-fluid">
                     <p class="para-text">The retinoids are a class of chemical compounds that regulate epithelial
                         cell growth. Essentially, they help repair the skins cells and any damage caused by the
                         winter weather.</p>
@@ -95,7 +95,7 @@
                         <hr class="mt-0">
                         <div class="row pt-3">
                             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                                <img src="/assets/images/blog-3.png" alt="blog1">
+                                <img src="/assets/images/blog-3.webp" alt="blog1">
                             </div>
                             <div class="col-10 col-md-10 col-sm-10 col-lg-10">
                                 <p>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="row pt-3">
                             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                                <img src="/assets/images/blog-5.png" alt="blog2">
+                                <img src="/assets/images/blog-5.webp" alt="blog2">
                             </div>
                             <div class="col-10 col-md-10 col-sm-10 col-lg-10">
                                 <p>
@@ -164,7 +164,7 @@
             <h4>About Dr Sophia – A master in the artistry of skincare</h4>
             <div class="row">
                 <div class="col-md-4 col-lg-4 col-sm-4 p-4">
-                    <img src="/assets/images/about.png" alt="about" class="img-fluid w-100">
+                    <img src="/assets/images/about.webp" alt="about" class="img-fluid w-100">
                 </div>
                 <div class="col-md-8 col-lg-8 col-sm-8">
                     <p class="para-text para-text1">

@@ -17,7 +17,7 @@
 
 @section('content')
 <main>
-    <section class="banner pt-0" style="background-image:url('assets/images/expert-banner.png');background-size: 100% 100%;">
+    <section class="banner pt-0" style="background-image:url('assets/images/expert-banner.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6 pt-5">
@@ -28,7 +28,7 @@
                     </p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-lg-6">
-                    <img src="/assets/images/expert-img.png" alt="dr" class="img-fluid w-100">
+                    <img src="/assets/images/expert-img.webp" alt="dr" class="img-fluid w-100">
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-1.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -68,7 +68,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-2.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -90,7 +90,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-3.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-3.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -111,7 +111,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-4.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -132,7 +132,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-5.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-5.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -154,7 +154,7 @@
         </div>
     </section>
 
-    <section class="dr-sophia" style="background-image:url('assets/images/expert-banner.png');background-size: 100% 100%;">
+    <section class="dr-sophia" style="background-image:url('assets/images/expert-banner.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8">
@@ -172,7 +172,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-4 col-lg-4">
-                    <img src="/assets/images/expert.png" alt="expert" class="img-fluid">
+                    <img src="/assets/images/expert.webp" alt="expert" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -434,7 +434,7 @@
         </div>
     </section>
 
-    <section id="recent-blogs" class="recent-blogs" style="background: url('assets/images/luxury-bg.png');background-size: 100% 100%;">
+    <section id="recent-blogs" class="recent-blogs" style="background: url('assets/images/luxury-bg.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center pricing_plan_content">
@@ -446,7 +446,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-3">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-1.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -468,7 +468,7 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 px-3">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-2.png" class="img-fluid w-100" alt="blog">
+                            <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>

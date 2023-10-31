@@ -2,7 +2,7 @@
         <div class="container d-flex align-items-center justify-content-end">
             <h1 class="logo w-25">
                 <a class="logo p-3" href="{{route('index')}}">
-                    <img class="logo-white" src="/assets/images/fav-icon.png" alt="Logo">
+                    <img class="logo-white" src="/assets/images/fav-icon.webp" alt="Logo">
                 </a>
             </h1>
             <nav id="navbar" class="navbar">
@@ -44,7 +44,7 @@
                         <div>
                             <h5 class="logo pt-4 pb-4">
                                 <a href="{{route('index')}}">
-                                    <img src="/assets/images/favicon.png" alt="Logo" class="img-fluid w-100">
+                                    <img src="/assets/images/favicon.webp" alt="Logo" class="img-fluid w-100">
                                 </a>
                             </h5>
 

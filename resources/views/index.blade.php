@@ -11,7 +11,7 @@
 
 @section('content')
 <main>
-    <section class="banner" style="background: url('assets/images/luxury-bg.png') 100% 100%;">
+    <section class="banner" style="background: url('assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6">
@@ -24,7 +24,7 @@
                         an Appointment</a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-lg-6">
-                    <img src="/assets/images/luxury-clinic.png" alt="luxury-clinic" class="img-fluid w-100">
+                    <img src="/assets/images/luxury-clinic.webp" alt="luxury-clinic" class="img-fluid w-100">
                     <a class="btn btn-bookAppointment  d-block d-md-none" href="{{route('gp')}}#gp-form">Book
                         an Appointment</a>
                 </div>
@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <section class="welcome" style="background: url('assets/images/expert-banner.png') 100% 100%;">
+    <section class="welcome" style="background: url('assets/images/expert-banner.webp') 100% 100%;">
         <div class="container">
             <div class="row">
                 <h3> Welcome to Dr. Sophia's Wellness </h3>
@@ -55,13 +55,13 @@
                         state-of-the-art aesthetics Technology and techniques.</p>
                 </div>
                 <div class="col-md-4 col-sm-4 col-lg-4">
-                    <img src="/assets/images/welcome.png" alt="welcome" class="img-fluid w-100">
+                    <img src="/assets/images/welcome.webp" alt="welcome" class="img-fluid w-100">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="services" style="background: url('assets/images/luxury-bg.png') 100% 100%;">
+    <section class="services" style="background: url('assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12">
@@ -98,13 +98,13 @@
             <hr>
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12">
-                    <img src="/assets/images/video.png" class="img-fluid w-100" alt="video">
+                    <img src="/assets/images/video.webp" class="img-fluid w-100" alt="video">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about-me" style="background: url('assets/images/luxury-bg.png') 100% 100%;">
+    <section class="about-me" style="background: url('assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
             <h4>About me</h4>
             <hr>
@@ -120,7 +120,7 @@
                     </p>
                 </div>
                 <div class="col-md-5 col-sm-5 col-lg-5 col2">
-                    <img src="/assets/images/about.png" alt="about" class="img-fluid ">
+                    <img src="/assets/images/about.webp" alt="about" class="img-fluid ">
                 </div>
             </div>
         </div>
@@ -151,8 +151,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="form-floating">
-                            <input type="email" class="form-control shadow-none" id="landing_email" placeholder="Email Address" name="landing_email" required>
-                            <label for="landing_email">Email Address</label>
+                            <input type="email" class="form-control shadow-none" id="customer_email" placeholder="Email Address" name="customer_email" required>
+                            <label for="customer_email">Email Address</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
@@ -163,10 +163,23 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="form-floating">
-                            <input type="date" class="form-control shadow-none" id="date" placeholder="Date" name="date" required>
+                            <input type="text" id="date" class="form-control shadow-none datepicker" id="date" placeholder="Date" name="date" required>
                             <label for="date">Date</label>
                         </div>
                     </div>
+                    <div style="display: none;" class="col-lg-4 col-md-6 col-12 mb-3 inputdatetime">
+                        <div class="form-floating">
+                            <input required="" type="text" class="form-control shadow-none" id="inputDateTime">
+                            <label for="inputDateTime"> Appointment Date &amp; Time </label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="p_id" value="64">
+                    <input type="hidden" id="booking_date">
+                    <input type="hidden" id="booking_time">
+                    <input type="hidden" id="booking_start_time">
+                    <input type="hidden" id="booking_end_time">
+
                     <div class="col-lg-4 col-md-12 col-12 mb-3" style="justify-content: center; display:flex !important">
                         <button type="button" id="btn_form_submit" class="btn btn-primary w-100 py-3 bg-blue">Book
                             Consultation</button>
@@ -563,7 +576,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-1.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -586,7 +599,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-2.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -609,7 +622,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-4.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -658,7 +671,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-1.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -685,7 +698,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-2.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -712,7 +725,7 @@
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-4.png" class="img-fluid w-100" alt="blog">
+                                        <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
@@ -746,8 +759,10 @@
         </div>
     </section>
 
+
 </main>
 @endsection
 
 @section('javascript')
+
 @endsection

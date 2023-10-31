@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-// use Haruncpi\LaravelUserActivity\Traits\Loggable;
+use Haruncpi\LaravelUserActivity\Traits\Loggable;
 
 class Category extends Model
 {
     use SoftDeletes;
-    // use Loggable;
+    use Loggable;
 
     protected $dates = ['deleted_at'];
 

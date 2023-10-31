@@ -17,7 +17,7 @@
 
 @section('content')
 <main>
-    <section class="banner" style="background-image:url('assets/images/expert-banner.png'); background-size: 100% 100%;">
+    <section class="banner" style="background-image:url('assets/images/expert-banner.webp'); background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6">
@@ -29,13 +29,13 @@
                     </p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-lg-6 p-0">
-                    <img src="/assets/images/beauty-banner-img.png" alt="dr" class="img-fluid px-3 w-100">
+                    <img src="/assets/images/beauty-banner-img.webp" alt="dr" class="img-fluid px-3 w-100">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="our-gallery" style="background-image:url('assets/images/luxury-bg.png');background-size: 100% 100%;">
+    <section class="our-gallery" style="background-image:url('assets/images/luxury-bg.webp');background-size: 100% 100%;">
         <div class="container">
             <h3>Our Gallery</h3>
             <hr>
@@ -44,7 +44,7 @@
                     <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal">
                         <div class="image-container px-3">
                             <div class="box"></div>
-                            <img class="img-fluid " src="/assets/images/beauty-card-1.png" alt="beauty-card-1">
+                            <img class="img-fluid " src="/assets/images/beauty-card-1.webp" alt="beauty-card-1">
                         </div>
                         <p class="para-head">Aesthetic Treatment</p>
                     </a>
@@ -53,7 +53,7 @@
                     <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal">
                         <div class="image-container px-3">
                             <div class="box"></div>
-                            <img class="img-fluid " src="/assets/images/beauty-card-2.png" alt="beauty-card-2">
+                            <img class="img-fluid " src="/assets/images/beauty-card-2.webp" alt="beauty-card-2">
                         </div>
 
                         <p class="para-head">Injectable Treatment</p>
@@ -63,7 +63,7 @@
                     <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal">
                         <div class="image-container px-3">
                             <div class="box"></div>
-                            <img class="img-fluid " src="/assets/images/beauty-card-3.png" alt="beauty-card-3">
+                            <img class="img-fluid " src="/assets/images/beauty-card-3.webp" alt="beauty-card-3">
                         </div>
 
                         <p class="para-head">Medical Facial
@@ -367,10 +367,24 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="form-floating">
-                            <input type="date" class="form-control shadow-none" id="date" placeholder="Date" name="date" required>
+                            <input type="text" id="date" class="form-control shadow-none datepicker" id="date" placeholder="Date" name="date" required>
                             <label for="date">Date</label>
                         </div>
                     </div>
+                    <div style="display: none;" class="col-lg-4 col-md-6 col-12 mb-3 inputdatetime">
+                        <div class="form-floating">
+                            <input required="" type="text" class="form-control shadow-none" id="inputDateTime">
+                            <label for="inputDateTime"> Appointment Date &amp; Time </label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="p_id" value="64">
+                    <input type="hidden" id="booking_date">
+                    <input type="hidden" id="booking_time">
+                    <input type="hidden" id="booking_start_time">
+                    <input type="hidden" id="booking_end_time">
+
+                    
                     <div class="col-lg-4 col-md-12 col-12 mb-3" style="justify-content: center; display:flex !important">
                         <button type="button" id="btn_form_submit" class="btn btn-primary w-100 py-3 bg-blue">Book
                             Consultation</button>
@@ -392,77 +406,77 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/1.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/1.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/2.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/2.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/3.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/3.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/4.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/4.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/5.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/5.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/6.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/6.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/7.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/7.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/8.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/8.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="/assets/images/gallery/9.png" class="d-block w-100" alt="Product">
+                                    <img src="/assets/images/gallery/9.webp" class="d-block w-100" alt="Product">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                <img src="/assets/images/gallery/1.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/1.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="1" aria-label="Slide 2">
-                                <img src="/assets/images/gallery/2.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/2.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="2" aria-label="Slide 3">
-                                <img src="/assets/images/gallery/3.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/3.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="3" aria-label="Slide 4">
-                                <img src="/assets/images/gallery/4.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/4.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="4" aria-label="Slide 5">
-                                <img src="/assets/images/gallery/5.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/5.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="5" aria-label="Slide 6">
-                                <img src="/assets/images/gallery/6.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/6.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="6" aria-label="Slide 7">
-                                <img src="/assets/images/gallery/7.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/7.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="7" aria-label="Slide 8">
-                                <img src="/assets/images/gallery/8.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/8.webp" class="d-block w-100" alt="Product">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="8" aria-label="Slide 9">
-                                <img src="/assets/images/gallery/9.png" class="d-block w-100" alt="Product">
+                                <img src="/assets/images/gallery/9.webp" class="d-block w-100" alt="Product">
                             </button>
                         </div>
                     </div>

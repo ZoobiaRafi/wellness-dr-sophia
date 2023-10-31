@@ -18,7 +18,7 @@
 @section('content')
 
 <main>
-    <section class="treatment" style="background: url('/assets/images/luxury-bg.png');">
+    <section class="treatment" style="background: url('/assets/images/luxury-bg.webp');">
         <div class="container">
             <div class="row row-main">
                 <div class="col-md-6 col-sm-6 col-lg-6">

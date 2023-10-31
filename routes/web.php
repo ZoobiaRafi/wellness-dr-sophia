@@ -26,6 +26,7 @@ Route::get('/treatments/{slug}',[FrontendController::class , 'treatments'])->nam
 Route::get('/treatments/services/{slug}',[FrontendController::class , 'treatmentService'])->name('treatmentService');
 Route::get('/gp-consultation',[FrontendController::class , 'gp'])->name('gp');
 Route::get('/terms-and-conditions',[FrontendController::class , 'terms'])->name('terms');
+Route::post('/check_avalibility', [FrontendController::class, 'check_avalibilty'])->name('check_avalibilty');
 
 
 Route::group(['prefix' => 'admin'], function () {

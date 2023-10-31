@@ -18,7 +18,7 @@
 @section('content')
 
 <main>
-    <section class="banner" style="background: url('/assets/images/luxury-bg.png') 100% 100%;">
+    <section class="banner" style="background: url('/assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6">
@@ -83,7 +83,7 @@
                                     <a href="{{url('/treatments/services/'.$t->slug)}}" class="view-more">View more</a>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12 col-12 buttons">
-                                <a class="btn btn-secondary btn-add-to-cart w-100" href="#">Add to cart</a>
+                                <a data-id="{{$t->id}}" data-key="{{$t->key}}" class="btn btn-secondary btn-add-to-cart w-100" href="#">Add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
         </div>
     </section>
 
-    <section class="services" style="background: url('/assets/images/luxury-bg.png') 100% 100%;">
+    <section class="services" style="background: url('/assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12">

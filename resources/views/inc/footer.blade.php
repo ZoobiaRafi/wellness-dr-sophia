@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <h3><img alt="footer logo" style="width: 200px;height: 70px;" src="/assets/images/fav-icon.png" />
+                    <h3><img alt="footer logo" style="width: 200px;height: 70px;" src="/assets/images/fav-icon.webp" />
                     </h3>
                 </div>
             </div>
@@ -144,7 +144,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
-                    <img alt="footer logo" style="width: 200px; margin-left: 2rem; margin-right: 2rem;" src="/assets/images/fav-icon.png" />
+                    <img alt="footer logo" style="width: 200px; margin-left: 2rem; margin-right: 2rem;" src="/assets/images/fav-icon.webp" />
                 </div>
             </div>
             <div class="row">

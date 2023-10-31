@@ -47,14 +47,14 @@
 
     // Define styles for the navbar when it's not fixed
     const defaultStyles = {
-        logoImage: '/assets/images/favicon.png',
+        logoImage: '/assets/images/favicon.webp',
         backgroundColor: 'transparent',
         textColor: '#0E8BA1',
     };
 
     // Define styles for the navbar when it's fixed
     const fixedStyles = {
-        logoImage: '/assets/images/fav-icon.png',
+        logoImage: '/assets/images/fav-icon.webp',
         backgroundColor: '#0E8BA1',
         textColor: '#FFFFFF',
     };
