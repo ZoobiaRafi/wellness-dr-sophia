@@ -4,6 +4,7 @@
 @endsection
 
 @section('title')
+Wellness by Dr.Sophia - Treatment
 @endsection
 
 @section('css')
@@ -59,13 +60,13 @@
                             </p>
                         </div>
                         <div class="col-6 col2">
-                            <p>Starting from <br class="d-block d-md-none"><span> &pound;250.00</span></p>
+                            <p>Starting from <br class="d-block d-md-none"><span>&pound;{{number_format($thisTreatment->price,2)}}</span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             {!!$thisTreatment->description!!}
-                            <a href="#" class="btn btn-cart">Add to Cart</a>
+                            <a href="/add-to-cart/{{$thisTreatment->id}}" data-id="{{$thisTreatment->id}}" data-key="{{$thisTreatment->ref_key}}" class="btn btn-cart w-100">Add to cart</a>
                         </div>
                     </div>
                 </div>

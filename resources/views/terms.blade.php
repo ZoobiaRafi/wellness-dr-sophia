@@ -4,6 +4,7 @@
 @endsection
 
 @section('title')
+Wellness by Dr.Sophia - Terms and Conditions
 @endsection
 
 @section('css')

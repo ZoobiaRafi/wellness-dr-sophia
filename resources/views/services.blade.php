@@ -4,6 +4,7 @@
 @endsection
 
 @section('title')
+Wellness by Dr.Sophia - Our Services
 @endsection
 
 @section('css')
@@ -51,8 +52,8 @@
 
                 @foreach($treatments as $t)
                 @if($count==3)
-                </div>
-                <div class="row more-services d-none d-md-flex align-items-center justify-content-center">
+            </div>
+            <div class="row more-services d-none d-md-flex align-items-center justify-content-center">
                 @else
                 @endif
                 <div class="col-md-4 col-sm-4 col-lg-4">
@@ -73,27 +74,27 @@
                             </div>
                             <div class="col-5 col-md-5 col-sm-5 col-lg-5 price">
                                 <p class="starting-from">Starting from</p>
-                                <p class="text-right">&pound;145.00</p>
+                                <p class="text-right">&pound;{{number_format($t->price,2)}}</p>
                                 <!-- <p class="para-was">was <span>160.00</span> -->
                             </div>
 
                             <div class="text-div col-12 col-md-12 col-sm-12 col-lg-12">
                                 <p class="para">{{$t->short_description}}
                                 </p>
-                                    <a href="{{url('/treatments/services/'.$t->slug)}}" class="view-more">View more</a>
+                                <a href="{{url('/treatments/services/'.$t->slug)}}" class="view-more">View more</a>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12 col-12 buttons">
-                                <a data-id="{{$t->id}}" data-key="{{$t->key}}" class="btn btn-secondary btn-add-to-cart w-100" href="#">Add to cart</a>
+                                <a href="/add-to-cart/{{$t->id}}" data-id="{{$t->id}}" data-key="{{$t->ref_key}}" class="btn btn-secondary btn_add_to_cart btn-add-to-cart w-100">Add to cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 @php
-                    $count++;
+                $count++;
                 @endphp
                 @endforeach
             </div>
-            
+
             <div class="row">
                 <div class="col-lg-12 d-block d-md-none text-center div-btn">
                     <a id="btn-viewmore" class="btn btn-viewmore" onclick="toggleMoreServices();">Show More</a>
@@ -371,7 +372,7 @@
                 @foreach($servExcludeCurrent as $s)
                 <div class="col-md-3 col-sm-3 col-lg-3  d-flex align-items-center justify-content-center py-3">
                     <div class="image-container">
-                    <img src="{{'/storage/'.($s->w_home_card_img)}}" alt="{{$s->slug}}">
+                        <img src="{{'/storage/'.($s->w_home_card_img)}}" alt="{{$s->slug}}">
                         <div class="overlay">
                             <h4>{{$s->title}}</h4>
                             <div class="content">
@@ -385,29 +386,34 @@
             </div>
         </div>
     </section>
+
 </main>
 @endsection
 
 @section('javascript')
 <script>
-    function toggleMoreServices() {
-    var moreServicesDiv = document.querySelector('.more-services');
-    var btnViewMore = document.getElementById('btn-viewmore');
-    var btnViewLess = document.getElementById('btn-viewless');
+    $(document).ready(function() {
 
-    moreServicesDiv.classList.toggle('d-none'); // Toggle visibility of more-services div
-    btnViewMore.style.display = 'none'; // Hide "View More" button
-    btnViewLess.style.display = 'block'; // Show "View less" button
+    });
+
+    function toggleMoreServices() {
+        var moreServicesDiv = document.querySelector('.more-services');
+        var btnViewMore = document.getElementById('btn-viewmore');
+        var btnViewLess = document.getElementById('btn-viewless');
+
+        moreServicesDiv.classList.toggle('d-none'); // Toggle visibility of more-services div
+        btnViewMore.style.display = 'none'; // Hide "View More" button
+        btnViewLess.style.display = 'block'; // Show "View less" button
     }
 
     function toggleLessServices() {
-    var moreServicesDiv = document.querySelector('.more-services');
-    var btnViewMore = document.getElementById('btn-viewmore');
-    var btnViewLess = document.getElementById('btn-viewless');
+        var moreServicesDiv = document.querySelector('.more-services');
+        var btnViewMore = document.getElementById('btn-viewmore');
+        var btnViewLess = document.getElementById('btn-viewless');
 
-    moreServicesDiv.classList.toggle('d-none'); // Toggle visibility of more-services div
-    btnViewMore.style.display = 'block'; // Show "View More" button
-    btnViewLess.style.display = 'none'; // Hide "View less" button
+        moreServicesDiv.classList.toggle('d-none'); // Toggle visibility of more-services div
+        btnViewMore.style.display = 'block'; // Show "View More" button
+        btnViewLess.style.display = 'none'; // Hide "View less" button
     }
 </script>
 @endsection

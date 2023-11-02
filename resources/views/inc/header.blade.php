@@ -132,7 +132,12 @@
 
                 </ul>
                 <a href="javascript:;" class="nav-link scrollto support-link cart-icon" title="My Cart">
-                     <i class="fa fa-shopping-cart"> </i>
+                     <i class="fa fa-shopping-cart">
+                        @php $CartQty = \Cart::getTotalQuantity(); @endphp
+                        @if($CartQty)
+                            <span class="cart-num">{{$CartQty}}</span>
+                        @endif
+                     </i>
                 </a>
 
                 <i class="fa fa-solid fa-bars mobile-nav-toggle d-block d-lg-none bi-list bi-x"></i>

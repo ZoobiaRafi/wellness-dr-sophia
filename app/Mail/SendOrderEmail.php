@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use App\Order;
+
+class SendOrderEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    protected $order_id;
+    protected $template;
+
+    public function __construct($order_id,$template)
+    {
+        $this->order_id = $order_id;
+        $this->template = $template;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        $HtmlPath = "emails.orders.customer";
+        $OrderInfo = Order::find($this->order_id);
+        
+        $subject = "Your Order #" . $this->order_id . " at Wellness by Dr. Sophia";
+        if($this->template == "admin") {
+            $subject = "Order #" . $this->order_id . " Received";
+            $HtmlPath = "emails.orders.admin";
+            $OrderInfo = Order::find($this->order_id);
+        }
+        return $this->subject($subject)->from('orders@wellnessbydrsophia.com','Wellness by Dr. Sophia')->view($HtmlPath, compact('OrderInfo'));
+    }
+}

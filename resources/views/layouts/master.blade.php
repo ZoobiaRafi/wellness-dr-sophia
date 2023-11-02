@@ -28,30 +28,70 @@
 
     <!-- CSS -->
     <style>
-    .dtp>.dtp-content>.dtp-date-view>header.dtp-header{
-        background-color: #0e8ba1;
-    }
-    .dtp div.dtp-date, .dtp div.dtp-time {
-        background-color: #1d6673;
-    }
-    .dtp table.dtp-picker-days tr>td>a.selected{
-        background-color: #0e8ba1;
-    }
-    .dtp .p10>a {
-        color: #0e8ba1;
-    }
-    .booking-engineen .modal-title{
-        color: gray;
-    }
-    .booking-engineen .modal-body {
-        max-height: 350px;
-        overflow-x: auto;
-    }
-    .booking-engineen-btn label{
-        /* width: 25%; */
-        width: 100%;
-    }
+        .dtp>.dtp-content>.dtp-date-view>header.dtp-header {
+            background-color: #0e8ba1;
+        }
 
+        .dtp div.dtp-date,
+        .dtp div.dtp-time {
+            background-color: #1d6673;
+        }
+
+        .dtp table.dtp-picker-days tr>td>a.selected {
+            background-color: #0e8ba1;
+        }
+
+        .dtp .p10>a {
+            color: #0e8ba1;
+        }
+
+        .booking-engineen .modal-title {
+            color: gray;
+        }
+
+        .booking-engineen .modal-body {
+            max-height: 350px;
+            overflow-x: auto;
+        }
+
+        .booking-engineen-btn label {
+            /* width: 25%; */
+            width: 100%;
+        }
+
+        .navbar-user a span.cart-num {
+            position: absolute;
+            top: 0px;
+            background: #ed0000;
+            font-size: 11px;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            line-height: 18px;
+            text-align: center;
+            padding: 0;
+            right: 3px;
+        }
+
+        .checkoutArea .item_quantity {
+            width: 22px;
+            height: 22px;
+            background: #0e8ba1;
+            border-radius: 360px;
+            font-size: 10px;
+            color: #fff;
+            text-align: center;
+            line-height: 22px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-weight: 700;
+        }
+
+        .base-sidebar-content-body h4 {
+            font-size: 18px;
+        }
     </style>
     @yield('css')
 </head>
@@ -64,19 +104,106 @@
     <div class="slideRightToLeft cart_slider">
         <div class="base-sidebar-content">
             <div class="base-sidebar-content-body">
-
+                <!-- <button class="back-to-cart"><i class="mdi mdi-chevron-left"></i> Back</button> -->
                 <button class="back-to-cart cart_slide_close"><i class="mdi mdi-chevron-left"></i> Back</button>
                 <div class="cart-full checkoutArea">
+                    @if(isset($cart_items))
                     <h3>Your cart</h3>
+                    @foreach ($cart_items as $key => $value)
+                    <div class="row @if($loop->iteration > 1) border-top pt-4 @endif">
+                        <div class="col-4 col-lg-3 position-relative">
+                            {{-- <a href="/{{ $value->associatedModel->category_detail->slug }}/{{ $value->associatedModel->slug }}"> --}}
+                            <a href="#">
+                                <div class="position-relative" style="width: 100%; max-width: 125px; margin: 0 auto; background: #ddd">
+                                    <img alt="{{$value->name}}" class="img-fluid" src="/storage/{{ $value->associatedModel->image }}">
+                                    <div class="item_quantity">{{ $value->quantity }}</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-8 col-lg-9">
+                            <div class="row g-0">
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-9">
+                                        <a href="/{{ $value->associatedModel->category_detail->slug }}/{{ $value->associatedModel->slug }}" style="color:#000">
+                                            <h4 class="test_title small_title d-inline m-0">
+                                                {{ $value->name }}
+                                            </h4>
+                                        </a>
+                                        <br>
+                                        @foreach($value->associatedModel->general_options as $go)
+                                        <p class="mb-2" style="font-size: 13px"><i style="color: #0174cf" class='bx bxs-check-circle'></i> {{$go->general_detail->title}}</p>
+                                        @endforeach
+                                        @if(!empty($value->associatedModel->book_order))
+                                        <p class="mb-2" style="font-size: 13px">
+                                            @if(!empty($value->attributes['type']))
+                                            @if($value->attributes['type'] == 1)
+                                            <i style="color: #0174cf" class='bx bxs-check-circle'></i> Home Delivery
+                                        </p>
+                                        {{-- <p class="mb-2" style="font-size: 13px"><i style="color: #0174cf" class='bx bxs-check-circle'></i> 2-3 Days Delivery --}}
+                                        @elseif($value->attributes['type'] == 2)
+                                        <i style="color: #0174cf" class='bx bxs-check-circle'></i> Click & Collect
+                                        <br>
+                                        @if(isset($value->attributes['pharmacyname']))
+                                        Pharmacy name: {{ucfirst($value->attributes['pharmacyname'])}}
+                                        @endif
+                                        @else
+                                        <i style="color: #0174cf" class='bx bxs-check-circle'></i> In Clinic
+                                        @endif
+                                        @else
+                                        <i style="color: #0174cf" class='bx bxs-check-circle'></i> In Clinic
+                                        @endif
+                                        </p>
+                                        @endif
+                                        @if($value->associatedModel->category == 32)
+                                        <p class="mb-2" style="font-size: 12px; color:green">Session Time: {{ $value->attributes->total_sessions}}</p>
+                                        @elseif($value->attributes->total_sessions)
+                                        <p class="mb-2" style="font-size: 12px; color:green">Total Session: {{ $value->attributes->total_sessions}}</p>
+                                        @endif
+                                        @if($value->attributes->package_name)
+                                        <p class="mb-2" style="font-size: 12px; color:green; text-align: left !important; display:block !important;">Package: <span id="nosession">{{ $value->attributes->package_name}}</span></p>
+                                        @endif
+                                        @if(isset($value->attributes->discount['old_price']))
+                                        <p class="mb-2" style="font-size: 12px; color:green">Discount: <br />{{ $value->attributes->discount['discount_title'] }}</p>
+                                        @endif
+                                        {{-- @if($value->attributes->booking_date_time)
+												<p class="mb-2" style="font-size: 12px;">Booking Date & Time: <br />{{ $value->attributes->booking_date_time }}</p>
+                                        @endif --}}
+                                        {{-- @if(isset($value->attributes->discount['expiry_date']))
+												<p class="mb-2" style="font-size: 12px; color:green">Discount: <br />{{ $value->attributes->discount['expiry_date'] }}</p>
+                                        @endif --}}
+                                    </div>
+
+                                    <div class="col-5 col-md-3">
+                                        <div class="test_price">
+                                            <span class="price_icon">£</span>{{ number_format($value->price*$value->quantity,2) }}
+                                        </div>
+                                        @if($value->attributes->old_laser_price != "")
+                                        <div class="cross-price">Was <b>&pound;{{ number_format($value->attributes->old_laser_price,2) }}</b></div>
+                                        @elseif(isset($value->associatedModel->old_price))
+                                        <div class="cross-price">Was <b>&pound;{{ number_format($value->associatedModel->old_price,2) }}</b></div>
+                                        @elseif($value->attributes->old_price != "")
+                                        <div class="cross-price">Was <b>&pound;{{ number_format($value->attributes->old_price,2) }}</b></div>
+                                        @endif
+                                    </div>
+                                    <div class="cart-full-remove">
+                                        <a href="/my-cart/{{ $value->associatedModel->id }}/remove{{$utm}}" class="remove-btn">Remove &nbsp; <i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
                 </div>
+                @if(!count($cart_items))
                 <div class="empty-cart">
                     <div class="empty_cart_img_parent">
-                        <!-- <img alt="empty cart" class="empty_cart_img"
-                                src="https://www.optimizedbodyandmind.co.uk/assets/images/empty-cart.webp" /> -->
+                        <!-- <img alt="empty cart" class="empty_cart_img" src="{{ url('/assets/images/empty-cart.png') }}" /> -->
                     </div>
                     <h4>Your cart is empty</h4>
-
+                    <!-- <button type="button">Take quiz</button> -->
                 </div>
+                @endif
             </div>
             <div class="base-sidebar-content-sticky-footer">
                 <div class="cart-connector-sticky-footer flex-container">

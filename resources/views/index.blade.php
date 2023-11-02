@@ -4,6 +4,7 @@
 @endsection
 
 @section('title')
+Wellness by Dr.Sophia - Home
 @endsection
 
 @section('css')
