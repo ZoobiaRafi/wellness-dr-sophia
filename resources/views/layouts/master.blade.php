@@ -396,7 +396,7 @@
                 var bookingstarttime = $("#booking_start_time").val();
                 var bookingendtime = $("#booking_end_time").val();
                 // var preferences = $("#preferences").val();
-                debugger;
+                // debugger;
                 if (firstname != "") {
                     if (lastname != "") {
                         if (contactno != "") {

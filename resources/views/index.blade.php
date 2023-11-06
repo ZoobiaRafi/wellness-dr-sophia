@@ -136,7 +136,7 @@ Wellness by Dr.Sophia - Home
                     <h5>Fill Details</h5>
                 </div>
             </div>
-            <form action="#" class="ps-0" id="contact_us_form">
+            <form action="#" class="ps-0" id="gpform">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="form-floating">
@@ -182,7 +182,7 @@ Wellness by Dr.Sophia - Home
                     <input type="hidden" id="booking_end_time">
 
                     <div class="col-lg-4 col-md-12 col-12 mb-3" style="justify-content: center; display:flex !important">
-                        <button type="button" id="btn_form_submit" class="btn btn-primary w-100 py-3 bg-blue">Book
+                        <button type="button" id="btn_form_submit" class="btn btn-primary btn-book-order w-100 py-3 bg-blue">Book
                             Consultation</button>
                     </div>
                 </div>

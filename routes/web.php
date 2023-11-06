@@ -40,6 +40,7 @@ Route::get('/check/{email}', [FrontendController::class, 'check_email'])->name('
 Route::get('/checkout/success/{oid}', [FrontendController::class, 'checkout_success_payment_final'])->name('checkout.success.payment.final');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+// Route::group(['prefix' => 'admin'], function () {
+//     Voyager::routes();
+// });
+

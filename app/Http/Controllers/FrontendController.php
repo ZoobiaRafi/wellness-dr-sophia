@@ -294,12 +294,7 @@ class FrontendController extends Controller
         $Order->address = "Aa Business Centre, 326-340, Dunstable Rd, Maidenhall, Luton LU4 8JS, United Kingdom";
         $Order->status = 1;
         $Order->referrer = $request->refer;
-        if($request->id == 0){
-            $Order->payment_gateway = "Take Payment";
-        }
-        else{
-            $Order->payment_gateway = "In Clinic";
-        }
+        $Order->payment_gateway = "In Clinic";
         $Order->takepayment_status = "Pending";
         if($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null ){
             $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term; 
