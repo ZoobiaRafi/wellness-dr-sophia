@@ -27,8 +27,11 @@ Wellness by Dr.Sophia - Blogs - {{$thisBlog->title}}
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8 px-3">
-                <img src="/assets/images/blog2-detail-1.webp" alt="Nourishing" class="img-top img-fluid">
-                    {!!$thisBlog->content!!}
+                <img src="/storage/{{ $thisBlog->blog_img_1 }}" alt="Nourishing" class="img-top img-fluid">
+                <h4>{{$thisBlog->title}}</h4>
+                    {!!$thisBlog->content_1!!}
+                <img src="/storage/{{ $thisBlog->blog_img_2 }}" alt="Nourishing" class="img-top img-fluid">
+                {!!$thisBlog->content_2!!}
                 </div>
                 <div class="col-md-3 col-sm-3 col-lg-3 mt-3 d-none d-md-block">
                     <div class="latest-blogs">
