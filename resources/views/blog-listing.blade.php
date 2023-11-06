@@ -18,7 +18,7 @@ Wellness by Dr.Sophia - Blogs
 
 @section('content')
 <main>
-    <section class="banner pt-0" style="background-image:url('assets/images/expert-banner.webp');background-size: 100% 100%;">
+    <section class="banner pt-0" style="background-image:url('/assets/images/expert-banner.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6 pt-5">
@@ -44,118 +44,35 @@ Wellness by Dr.Sophia - Blogs
                 </div>
             </div>
             <div class="row d-flex align-items-center justify-content-center">
+                @foreach ($blogs as $blog)
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
+                            <img src="/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
-                                <p class="para-head">Getting Glam for the Event: Your Ultimate Pre-Party
-                                    Preparation Guide
+                                <p class="para-head">
+                                    <a href="/blogs/{{$blog->slug}}" class="para-head">{{$blog->title}}</a>
                                 </p>
                                 <div class="d-flex">
                                     <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
+                                        <a href="/blogs/{{$blog->slug}}" class="read-more">
                                             Read More <span><i class="fa-solid fa-angles-right"></i></span>
                                         </a>
                                     </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
+                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
-                    <div class="card text-start">
-                        <div class="card-img-top">
-                            <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <div>
-                                <p class="para-head">Winter Skin Care: Protecting and Nourishing Your
-                                    Skin During the Cold
-                                    Months</p>
-                                <div class="d-flex">
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
-                                            Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                        </a>
-                                    </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
-                    <div class="card text-start">
-                        <div class="card-img-top">
-                            <img src="/assets/images/blog-3.webp" class="img-fluid w-100" alt="blog">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <div>
-                                <p class="para-head">Unlocking the Power of Derma Fillers: An Expert
-                                    Spotlight</p>
-                                <div class="d-flex">
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
-                                            Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                        </a>
-                                    </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
-                    <div class="card text-start">
-                        <div class="card-img-top">
-                            <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <div>
-                                <p class="para-head">Unlocking the Power of Derma Fillers: An Expert
-                                    Spotlight</p>
-                                <div class="d-flex">
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
-                                            Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                        </a>
-                                    </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
-                    <div class="card text-start">
-                        <div class="card-img-top">
-                            <img src="/assets/images/blog-5.webp" class="img-fluid w-100" alt="blog">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <div>
-                                <p class="para-head">Unlocking the Power of Derma Fillers: An Expert
-                                    Spotlight</p>
-                                <div class="d-flex">
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
-                                            Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                        </a>
-                                    </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="dr-sophia" style="background-image:url('assets/images/expert-banner.webp');background-size: 100% 100%;">
+    <section class="dr-sophia" style="background-image:url('/assets/images/expert-banner.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8">
@@ -179,7 +96,7 @@ Wellness by Dr.Sophia - Blogs
         </div>
     </section>
 
-    <section id="reviews" style="background: url('assets/images/testimonials.png');background-size: 100% 100%;" class="reviews d-md-block d-none">
+    <section id="reviews" style="background: url('/assets/images/testimonials.png');background-size: 100% 100%;" class="reviews d-md-block d-none">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 pricing_plan_content">
@@ -319,7 +236,7 @@ Wellness by Dr.Sophia - Blogs
         </div>
     </section>
 
-    <section id="reviews" class="reviews d-block d-md-none " style="background: url('assets/images/testimonials.png');background-size: 100% 100%;">
+    <section id="reviews" class="reviews d-block d-md-none " style="background: url('/assets/images/testimonials.png');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 pricing_plan_content">
@@ -435,7 +352,7 @@ Wellness by Dr.Sophia - Blogs
         </div>
     </section>
 
-    <section id="recent-blogs" class="recent-blogs" style="background: url('assets/images/luxury-bg.webp');background-size: 100% 100%;">
+    <section id="recent-blogs" class="recent-blogs" style="background: url('/assets/images/luxury-bg.webp');background-size: 100% 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center pricing_plan_content">

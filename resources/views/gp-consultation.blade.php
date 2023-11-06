@@ -86,8 +86,8 @@ Wellness by Dr.Sophia - GP Consultation
                                     <input required="" type="text" class="form-control py-3 shadow-none" id="contact_no" placeholder="Enter contact number" maxlength="12">
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12 mt-4">
-                                    <label for="email"> Email <span class="color-red">*</span></label>
-                                    <input required="" type="email" class="form-control py-3 shadow-none" aria-describedby="emailHelp" placeholder="Enter email" id="email">
+                                    <label for="customer_email"> Email <span class="color-red">*</span></label>
+                                    <input required="" type="email" class="form-control py-3 shadow-none" aria-describedby="emailHelp" placeholder="Enter email" id="customer_email">
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12 mt-4">
                                     <label for="email"> Date <span class="color-red">*</span></label>

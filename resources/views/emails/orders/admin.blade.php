@@ -43,11 +43,11 @@
 		.l-black a { color: #282828; }
 		.l-pink a { color: #fdd700; }
 		.l-grey a { color: #6e6e6e; }
-		.l-purple a { color: #0b1f8f; }
+		.l-purple a { color: #1d6673; }
 
-		.gradient { background: linear-gradient(to right, #0b1f8f 0%,#fdd700 100%); }
+		.gradient { background: linear-gradient(to right, #1d6673 0%,#fdd700 100%); }
 
-		.btn-secondary { border-radius: 10px; background: linear-gradient(to right, #0b1f8f 0%,#fdd700 100%); }
+		.btn-secondary { border-radius: 10px; background: linear-gradient(to right, #1d6673 0%,#fdd700 100%); }
 
 				
 		/* Mobile styles */
@@ -120,7 +120,7 @@
 											<!-- Container -->
 											<table width="100%" border="0" cellspacing="0" cellpadding="0">
 												<tr>
-													<td class="pt-10" style="border-radius: 10px 10px 0 0; padding-top: 10px;" bgcolor="#0042b9">
+													<td class="pt-10" style="border-radius: 10px 10px 0 0; padding-top: 10px;" bgcolor="#0e8ba1">
 														<table width="100%" border="0" cellspacing="0" cellpadding="0">
 															<tr>
 																<td style="border-radius: 10px 10px 0 0;" bgcolor="#ffffff">
@@ -128,13 +128,13 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:right; min-width:auto !important; padding-right: 50px; padding-top: 10px;">
-																				<strong>Order Date: <span class="c-purple" style="color:#0b1f8f;">{{ date("d-m-Y", strtotime($OrderInfo->created_at)) }}</span></strong>
+																				<strong>Order Date: <span class="c-purple" style="color:#1d6673;">{{ date("d-m-Y", strtotime($OrderInfo->created_at)) }}</span></strong>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
 																				<a href="https://www.optimizedbodyandmind.co.uk" target="_blank">
-																					<img src="{{ url('/storage') }}/{{ setting('site.email_header_logo') }}"  border="0" alt="Wellness by Dr. Sophia" style="width: 200px;" />
+																					<img src="/assets/images/fav-icon.webp"  border="0" alt="Wellness by Dr. Sophia" style="width: 200px;" />
 																				</a>
 																			</td>
 																		</tr>
@@ -188,7 +188,7 @@
 																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																														<tr>
 																															<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																<strong>Invoice <span class="c-purple" style="color:#0b1f8f;">#{{ $OrderInfo->id }}</span></strong>
+																																<strong>Invoice <span class="c-purple" style="color:#1d6673;">#{{ $OrderInfo->id }}</span></strong>
 																															</td>
 																														</tr>
 																														@php
@@ -207,7 +207,7 @@
 																														@if(!empty($appointmentDate))
 																															<tr>
 																																<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																	<strong>Appointment Date: <span class="c-purple" style="color:#0b1f8f;">{{ $appointmentDate }}</span></strong>
+																																	<strong>Appointment Date: <span class="c-purple" style="color:#1d6673;">{{ $appointmentDate }}</span></strong>
 																																</td>
 																															</tr>
 																														@endif
@@ -215,7 +215,7 @@
 																														@if(!empty($appointmentTime))
 																															<tr>
 																																<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																	<strong>Appointment Time: <span class="c-purple" style="color:#0b1f8f;">{{ $appointmentTime }}</span></strong>
+																																	<strong>Appointment Time: <span class="c-purple" style="color:#1d6673;">{{ $appointmentTime }}</span></strong>
 																																</td>
 																															</tr>
 																														@endif
@@ -224,7 +224,7 @@
 																																@if(isset($op->session))
 																																	<tr>
 																																		<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																			<strong>Session: <span class="c-purple" style="color:#0b1f8f;">{{$op->session}}</span></strong>
+																																			<strong>Session: <span class="c-purple" style="color:#1d6673;">{{$op->session}}</span></strong>
 																																		</td>
 																																	</tr>
 																																@endif
@@ -438,7 +438,7 @@
 											<!-- Footer -->
 											<table width="100%" border="0" cellspacing="0" cellpadding="0">
 													<tr>
-														<td class="p-50 mpx-15" bgcolor="#0042b9" style="border-radius: 0 0 10px 10px; padding: 10px;">
+														<td class="p-50 mpx-15" bgcolor="#0e8ba1" style="border-radius: 0 0 10px 10px; padding: 10px;">
 															<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																<tr>
 																	<td align="center" class="pb-20">
@@ -448,7 +448,7 @@
 																		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																			<tr>
 																				<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																					<a href="#" target="_blank"><img src="{{ url('/storage') }}/{{ setting('site.email_footer_logo') }}"  border="0" alt="" style="width: 200px;" /></a>
+																					<a href="#" target="_blank"><img src="/assets/images/fav-icon.webp"  border="0" alt="" style="width: 200px;" /></a>
 																				</td>
 																			</tr>
 																		</table>

@@ -92,6 +92,9 @@
         .base-sidebar-content-body h4 {
             font-size: 18px;
         }
+        .test_price{
+            color: #1d6673;
+        }
     </style>
     @yield('css')
 </head>
@@ -210,6 +213,11 @@
                     <div class="cart-connector-checkout-button">
                         <a href class="btn cart_slide_close">Continue Shopping</a>
                     </div>
+                    @if(count($cart_items))
+                    <div class="cart-connector-checkout-button d-flex align-items-end justify-content-end">
+                        <a href="{{route('cart.my-cart')}}" class="btn cart_slide_close">Go to cart</a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -388,6 +396,7 @@
                 var bookingstarttime = $("#booking_start_time").val();
                 var bookingendtime = $("#booking_end_time").val();
                 // var preferences = $("#preferences").val();
+                debugger;
                 if (firstname != "") {
                     if (lastname != "") {
                         if (contactno != "") {

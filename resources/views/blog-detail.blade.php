@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-Wellness by Dr.Sophia - Blogs
+Wellness by Dr.Sophia - Blogs - {{$thisBlog->title}}
 
 @endsection
 
@@ -17,7 +17,7 @@ Wellness by Dr.Sophia - Blogs
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12">
-                    <h2 class="text-center">Expert Advice Detail</h2>
+                    <h2 class="text-center">{{$thisBlog->title}}</h2>
                 </div>
             </div>
         </div>
@@ -27,94 +27,24 @@ Wellness by Dr.Sophia - Blogs
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8 px-3">
-                    <h4>Winter Skin Care: Protecting and Nourishing Your Skin During the Cold Months</h4>
-                    <img src="/assets/images/blog-detail-1.webp" alt="Nourishing" class="img-top img-fluid">
-                    <p class="para-text">
-                        Winter can wreak havoc with our skin. The harsh cold winds and central heating can leave the
-                        skin dull, dry and therefore oily as it tries to counteract dryness with excessive oil
-                        production.
-                    </p>
-                    <p class="para-text">
-                        The icy cold weather can also cause trauma to skin, leading to premature aging and fine
-                        lines - so it’s essential that we pay extra attention to our skincare routine during these
-                        colder months.
-                    </p>
-                    <p class="para-text">
-                        Dr Sophia has rounded up her best advice for maintaining winter skin – keeping it young,
-                        fresh and glowing.
-                    </p>
-                    <h5>Hydration</h5>
-                    <img src="/assets/images/blog-detail-2.webp" alt="Nourishing" class="img-top img-fluid">
-                    <p class="para-text">Since we’re not as hot and we’re not as noticeably parched in the winter
-                        months compared to the summer, we often don’t drink enough water. It’s essential to remember
-                        to do this, and try to eat water-dense foods like grapefruit, broccoli, tomatoes, bell
-                        peppers, watermelon and celery for slow releasing hydration throughout the day</p>
-                    <p class="para-text">It’s also a good idea to drench the skin in hydrating moisturisers at
-                        night-time before going to bed. It allows the skin to fully absorb it throughout the night
-                        when it’s in repair mode.</p>
-                    <h5>Peptides</h5>
-                    <p class="para-text">
-                        Collagen peptide supplements help boost muscle growth and repair – helping to counteract the
-                        trauma that winter weather causes to the muscles in the face.
-                        Foods such as eggs, milk and plant sources (soy, oat, chickpeas, beans, peas, and lentils)
-                        are high in natural peptides and do wonders for muscle repair, so it’s wise to add more to
-                        your diet during the winter, says Dr Sophia.
-                    </p>
-                    <h5>Vitamin c</h5>
-                    <img src="/assets/images/blog-detail-3.webp" alt="Nourishing" class="img-top img-fluid">
-                    <p class="para-text">Vitamin C is a science-backed topical solution that helps slow down the
-                        signs of early skin aging. It also helps to improve the appearance of wrinkles, dark spots,
-                        and acne and helps to brighten dull skin – perfect for the winter.</p>
-                    <p class="para-text">Dr Sophia insists that vitamin C is a key lotion that should be a skincare
-                        essential and it can be found in most beauty stores with options to match all budgets.
-                    </p>
-                    <h5>Sun block</h5>
-                    <p class="para-text">
-                        It’s a well known fact that the sun is still there, even if it isn’t shining, so it’s
-                        essential to continue to use sun block and SPF in your skincare routine. It goes without
-                        saying that UV rays are harmful for skin and cause premature aging, so prevention is always
-                        better than cure says Dr Sophia.
-                    </p>
-                    <h5>Retinoids</h5>
-                    <img src="/assets/images/blog-detail-4.webp" alt="Nourishing" class="img-top img-fluid">
-                    <p class="para-text">The retinoids are a class of chemical compounds that regulate epithelial
-                        cell growth. Essentially, they help repair the skins cells and any damage caused by the
-                        winter weather.</p>
-                    <p class="para-text">They should be taken before bed mentions Dr Sophia, as they will make skin
-                        sensitive to sunlight (and as standard, SPF should be worn the following day.)</p>
-                    <h5>Regular facial treatments</h5>
-                    <p class="para-text">Despite how cold and glum it can get outside, make sure you take the time
-                        out to get a professional facial at least once every one to two months says Dr Sophia.</p>
-                    <p class="para-text">Medical grade facials provide endless benefits to skin cell growth and
-                        repair and should be considered a winter essential. The WOW Facial is a six-stage treatment
-                        that works through several layers of skin with full cleansing, peeling, WOW Fusion with
-                        Intradermology Solutions, light therapy, mask, and protection – available at Wellness by Dr
-                        Sophia.</p>
+                <img src="/assets/images/blog2-detail-1.webp" alt="Nourishing" class="img-top img-fluid">
+                    {!!$thisBlog->content!!}
                 </div>
                 <div class="col-md-3 col-sm-3 col-lg-3 mt-3 d-none d-md-block">
                     <div class="latest-blogs">
                         <h3>trending</h3>
                         <hr class="mt-0">
                         <div class="row pt-3">
+                            @foreach($blogs as $blog)
                             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                                <img src="/assets/images/blog-3.webp" alt="blog1">
+                                <img src="/storage/{{ $blog->image }}" alt="{{$blog->slug}}">
                             </div>
                             <div class="col-10 col-md-10 col-sm-10 col-lg-10">
                                 <p>
-                                    <a href="#">Getting Glam for the Event: Your Ultimate Pre-Party Preparation
-                                        Guide </a>
+                                    <a href="/blogs/{{$blog->slug}}">{{$blog->title}}</a>
                                 </p>
                             </div>
-                        </div>
-                        <div class="row pt-3">
-                            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                                <img src="/assets/images/blog-5.webp" alt="blog2">
-                            </div>
-                            <div class="col-10 col-md-10 col-sm-10 col-lg-10">
-                                <p>
-                                    <a href="#">Unlocking the Power of Derma Fillers: An Expert Spotlight </a>
-                                </p>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -160,6 +90,7 @@ Wellness by Dr.Sophia - Blogs
                 </div>
             </div>
     </section>
+
 
     <section class="blog-about">
         <div class="container">

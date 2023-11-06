@@ -43,11 +43,11 @@
 		.l-black a { color: #282828; }
 		.l-pink a { color: #fdd700; }
 		.l-grey a { color: #6e6e6e; }
-		.l-purple a { color: #0b1f8f; }
+		.l-purple a { color: #1d6673; }
 
-		.gradient { background: linear-gradient(to right, #0b1f8f 0%,#fdd700 100%); }
+		.gradient { background: linear-gradient(to right, #1d6673 0%,#fdd700 100%); }
 
-		.btn-secondary { border-radius: 10px; background: linear-gradient(to right, #0b1f8f 0%,#fdd700 100%); }
+		.btn-secondary { border-radius: 10px; background: linear-gradient(to right, #1d6673 0%,#fdd700 100%); }
 
 				
 		/* Mobile styles */
@@ -151,7 +151,7 @@
 											<!-- Container -->
 											<table width="100%" border="0" cellspacing="0" cellpadding="0">
 												<tr>
-													<td class="pt-10" style="border-radius: 10px 10px 0 0; padding-top: 10px;" bgcolor="#0042b9">
+													<td class="pt-10" style="border-radius: 10px 10px 0 0; padding-top: 10px;" bgcolor="#0e8ba1">
 														<table width="100%" border="0" cellspacing="0" cellpadding="0">
 															<tr>
 																<td style="border-radius: 10px 10px 0 0;" bgcolor="#ffffff">
@@ -159,13 +159,13 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:right; min-width:auto !important; padding-right: 50px; padding-top: 10px;">
-																				<strong>Order Date: <span class="c-purple" style="color:#0b1f8f;">{{date('d-m-Y', strtotime($order_date))}}</span></strong>
+																				<strong>Order Date: <span class="c-purple" style="color:#1d6673;">{{date('d-m-Y', strtotime($order_date))}}</span></strong>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="https://www.optimizedbodyandmind.co.uk" target="_blank">
-																					<img src="{{ url('https://www.optimizedbodyandmind.co.uk/storage') }}/{{ setting('site.email_header_logo') }}"  border="0" alt="Optimized Body & Mind" style="width: 200px;" />
+																				<a href="{{url('/')}}" target="_blank">
+																					<img src="/assets/images/fav-icon.webp"  border="0" alt="Wellness by Dr Sophia" style="width: 200px;" />
 																				</a>
 																			</td>
 																		</tr>
@@ -207,7 +207,7 @@
 																				</table>
 																				<!-- END Section - Separator Line -->
                                                                                 <p style="font-size:initial;font-weight: initial;line-height: initial;font-family: 'PT Sans', Arial, sans-serif;color:#282828">Dear {{$full_name}}, <br>
-																				{{ ($is_reminder == "Pre24Hours") ? "We hope this message finds you well. As your scheduled appointment with Optimized Body & Mind approaches, we wanted to send a friendly reminder." : "We are delighted to confirm your upcoming appointment with Optimized Body & Mind. We appreciate your trust in our services and look forward to providing you with an excellent experience. " }}
+																				{{ ($is_reminder == "Pre24Hours") ? "We hope this message finds you well. As your scheduled appointment with Wellness by Dr Sophia approaches, we wanted to send a friendly reminder." : "We are delighted to confirm your upcoming appointment with Wellness by Dr Sophia. We appreciate your trust in our services and look forward to providing you with an excellent experience. " }}
                                                                                      </p>
 																				<!-- Section - Order Details -->
 																				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="mt-20">
@@ -222,26 +222,26 @@
 																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																														<tr>
 																															<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																<strong>Invoice <span class="c-purple" style="color:#0b1f8f;">#{{$id}}</span></strong>
+																																<strong>Invoice <span class="c-purple" style="color:#1d6673;">#{{$id}}</span></strong>
 																															</td>
 																														</tr>
 																														
 
 																															<tr>
 																																<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																	<strong>Appointment Date: <span class="c-purple" style="color:#0b1f8f;">{{date('d-m-Y', strtotime($booking_date))}}</span></strong>
+																																	<strong>Appointment Date: <span class="c-purple" style="color:#1d6673;">{{date('d-m-Y', strtotime($booking_date))}}</span></strong>
 																																</td>
 																															</tr>
 
 																															<tr>
 																																<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																	<strong>Appointment Time: <span class="c-purple" style="color:#0b1f8f;">{{$appointment_time}}</span></strong>
+																																	<strong>Appointment Time: <span class="c-purple" style="color:#1d6673;">{{$appointment_time}}</span></strong>
 																																</td>
 																															</tr>
 
                                                                                                                             <tr>
 																																<td class="title-20 pb-15" style="font-size:16px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 15px;">
-																																	<strong>Service: <span class="c-purple" style="color:#0b1f8f;">{{$test_title}}</span></strong>
+																																	<strong>Service: <span class="c-purple" style="color:#1d6673;">{{$test_title}}</span></strong>
 																																</td>
 																															</tr>
 																													</table>
@@ -309,7 +309,7 @@
                                                                             <th class="d-block mt-10">Invoice Attached:</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Thank you once again for choosing Optimized Body & Mind. We look forward to serving you and ensuring your experience with us is enjoyable.</td>
+                                                                            <td>Thank you once again for choosing Wellness by Dr Sophia. We look forward to serving you and ensuring your experience with us is enjoyable.</td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>
@@ -325,7 +325,7 @@
 											<!-- Footer -->
 											<table width="100%" border="0" cellspacing="0" cellpadding="0">
 													<tr>
-														<td class="p-50 mpx-15" bgcolor="#0042b9" style="border-radius: 0 0 10px 10px; padding: 10px;">
+														<td class="p-50 mpx-15" bgcolor="#0e8ba1" style="border-radius: 0 0 10px 10px; padding: 10px;">
 															<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																<tr>
 																	<td align="center" class="pb-20">
@@ -335,7 +335,7 @@
 																		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																			<tr>
 																				<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																					<a href="#" target="_blank"><img src="{{ url('https://www.optimizedbodyandmind.co.uk/storage') }}/{{ setting('site.email_footer_logo') }}"  border="0" alt="" style="width: 200px;" /></a>
+																					<a href="#" target="_blank"><img src="/assets/images/fav-icon.webp"  border="0" alt="" style="width: 200px;" /></a>
 																				</td>
 																			</tr>
 																		</table>
@@ -354,7 +354,7 @@
 												<tr>
 													<td class="text-12 lh-22 a-center c-grey- l-grey py-20" style="font-size:12px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 22px; text-align:center; padding-top: 10px; padding-bottom: 4px;">
 														<a class="link c-grey" style="text-decoration:none; color:#6e6e6e;">
-															<span class="link c-grey" style="white-space: nowrap; text-decoration:none; color:#6e6e6e;">&copy; Copyright 2023 - Optimized Body & Mind</span>
+															<span class="link c-grey" style="white-space: nowrap; text-decoration:none; color:#6e6e6e;">&copy; Copyright 2023 - Wellness by Dr Sophia</span>
 														</a>
 													</td>
 												</tr>

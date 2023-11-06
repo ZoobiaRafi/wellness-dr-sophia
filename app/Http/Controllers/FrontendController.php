@@ -26,9 +26,12 @@ use App\Room;
 use App\Test;
 use App\Ticker;
 use App\TrustedCompany;
+use App\WellnessBlog;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use \Milon\Barcode\DNS1D;
+
 
 class FrontendController extends Controller
 {
@@ -179,14 +182,18 @@ class FrontendController extends Controller
     {
         return Test::where('slug', $slug)->where('status', 1)->first();
     }
+    public function currentBlog($slug)
+    {
+        return WellnessBlog::where('slug', $slug)->where('status', 1)->first();
+    }
     public function index(Request $request)
     {
         $view = 'index';
         $services = $this->services();
         $utm = $this->utmsources();
         $cart_items = $this->cart_items($request);
-        
-        return view($view, compact('services', 'cart_items','utm'));
+
+        return view($view, compact('services', 'cart_items', 'utm'));
     }
     public function gallery(Request $request)
     {
@@ -196,7 +203,7 @@ class FrontendController extends Controller
         $utm = $this->utmsources();
 
 
-        return view($view, compact('services','cart_items','utm'));
+        return view($view, compact('services', 'cart_items', 'utm'));
     }
     public function blogListing(Request $request)
     {
@@ -204,17 +211,21 @@ class FrontendController extends Controller
         $services = $this->services();
         $utm = $this->utmsources();
         $cart_items = $this->cart_items($request);
+        $blogs = WellnessBlog::where('status', 1)->get();
 
-        return view($view, compact('services','cart_items','utm'));
+
+        return view($view, compact('services', 'cart_items', 'utm', 'blogs'));
     }
-    public function blogDetail(Request $request)
+    public function blogDetail(Request $request, $slug)
     {
         $view = 'blog-detail';
         $services = $this->services();
         $cart_items = $this->cart_items($request);
         $utm = $this->utmsources();
+        $blogs = WellnessBlog::where('status', 1)->get();
+        $thisBlog = $this->currentBlog($slug);
 
-        return view($view, compact('services','cart_items','utm'));
+        return view($view, compact('services', 'cart_items', 'utm', 'thisBlog', 'blogs'));
     }
     public function gp(Request $request)
     {
@@ -223,7 +234,7 @@ class FrontendController extends Controller
         $utm = $this->utmsources();
         $cart_items = $this->cart_items($request);
 
-        return view($view, compact('services','cart_items','utm'));
+        return view($view, compact('services', 'cart_items', 'utm'));
     }
     public function terms(Request $request)
     {
@@ -232,7 +243,7 @@ class FrontendController extends Controller
         $cart_items = $this->cart_items($request);
         $utm = $this->utmsources();
 
-        return view($view, compact('services', 'cart_items','utm'));
+        return view($view, compact('services', 'cart_items', 'utm'));
     }
     public function treatments($slug, Request $request)
     {
@@ -245,7 +256,7 @@ class FrontendController extends Controller
 
         $view = 'services';
 
-        return view($view, compact('services', 'thisService', 'treatments', 'servExcludeCurrent','cart_items','utm'));
+        return view($view, compact('services', 'thisService', 'treatments', 'servExcludeCurrent', 'cart_items', 'utm'));
     }
     public function treatmentService($slug, Request $request)
     {
@@ -258,12 +269,11 @@ class FrontendController extends Controller
 
         $view = 'treatment-service';
 
-        return view($view, compact('services', 'thisTreatment', 'treatments', 'servExcludeCurrent','cart_items','utm'));
+        return view($view, compact('services', 'thisTreatment', 'treatments', 'servExcludeCurrent', 'cart_items', 'utm'));
     }
-    public function gpConsultation_submit(Request $request)
-    {
-        $User = User::where('email', $request->email)->first();
-        if (!isset($User)) {
+    public function gpConsultation_submit(Request $request){
+        $User = User::where('email',$request->email)->first();
+        if(!isset($User)){
             $User = new User();
             $User->name = $request->first_name . " " . $request->last_name;
             $User->email = $request->email;
@@ -284,11 +294,16 @@ class FrontendController extends Controller
         $Order->address = "Aa Business Centre, 326-340, Dunstable Rd, Maidenhall, Luton LU4 8JS, United Kingdom";
         $Order->status = 1;
         $Order->referrer = $request->refer;
-        $Order->payment_gateway = "In Clinic";
-        $Order->takepayment_status = "Pending";
-        if ($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null) {
-            $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term;
+        if($request->id == 0){
+            $Order->payment_gateway = "Take Payment";
         }
+        else{
+            $Order->payment_gateway = "In Clinic";
+        }
+        $Order->takepayment_status = "Pending";
+        if($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null ){
+            $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term; 
+        } 
         $Order->save();
         $OrderPro = new OrderProduct;
         $OrderPro->test_id = 64;
@@ -312,13 +327,13 @@ class FrontendController extends Controller
         $NewApp->test_id = 64;
         $NewApp->status = 1;
         $NewApp->gender_preference = $request->preference;
-        $NewApp->appointment_date = date('Y-m-d', strtotime($request->bookingdate));
-        $NewApp->appointment_start_time = $request->bookingstarttime;
+        $NewApp->appointment_date = date('Y-m-d',strtotime($request->bookingdate));
+        $NewApp->appointment_start_time = $request->bookingstarttime; 
         $NewApp->appointment_end_time = $request->bookingendtime;
-        $NewApp->appointment_time = $request->bookingstarttime . "-" . $request->bookingendtime;
+        $NewApp->appointment_time = $request->bookingstarttime . "-" .$request->bookingendtime;
         $NewApp->save();
 
-        if ($request->id == 0) {
+        if($request->id == 0){
             if (setting('take-payment.status') == "1") {
                 return response()->json([
                     "status" => "success",
@@ -326,10 +341,11 @@ class FrontendController extends Controller
                     "message" => "Please wait. We are processing your order",
                 ]);
             }
-        } else {
+        }
+        else{
             dispatch(new NewOrderEmailJob($Order->id, $request->email, "customer"));
-            $NotificationEmails = explode(",", env("NOTIFICATION_EMAILS"));
-            foreach ($NotificationEmails as $NE) {
+            $NotificationEmails = explode(",",env("NOTIFICATION_EMAILS"));
+            foreach($NotificationEmails as $NE) {
                 dispatch(new NewOrderEmailJob($Order->id, $NE, "admin"));
             }
             return response()->json([
@@ -604,7 +620,8 @@ class FrontendController extends Controller
         }
 
         $TestInfo = Test::find($id);
-        $session_id = $request->session()->get('session_id');
+        // $session_id = $request->session()->get('session_id');
+        $session_id = $this->generate_sessions($request);
         if (!$session_id) {
             // Generate a new session ID and store it in the session
             $session_id = time() . Str::random(10);
@@ -711,7 +728,9 @@ class FrontendController extends Controller
     }
     public function my_cart(Request $request)
     {
-        $session_id = $request->session()->get('session_id');
+        // $session_id = $request->session()->get('session_id');
+        $session_id = $this->generate_sessions($request);
+
         $UserID = 0;
         if (Auth()->check()) {
             $UserID =  Auth()->user()->id;
@@ -751,9 +770,10 @@ class FrontendController extends Controller
             'blogcategories',
         ));
     }
-    public function remove_cart(Request $request,$id)
+    public function remove_cart(Request $request, $id)
     {
-        $session_id = $request->session()->get('session_id');
+        // $session_id = $request->session()->get('session_id');
+        $session_id = $this->generate_sessions($request);
 
         $UserID = 0;
         if (Auth()->check()) {
@@ -785,13 +805,16 @@ class FrontendController extends Controller
 
         return redirect()->back();
     }
-    public function in_clinic_submit(Request $request){
+    public function in_clinic_submit(Request $request)
+    {
         // return $request;
-        $session_id = $request->session()->get('session_id');
-        if(Auth::check()){
+        // $session_id = $request->session()->get('session_id');
+        $session_id = $this->generate_sessions($request);
+
+        if (Auth::check()) {
             $UserID = Auth()->user()->id;
         }
-        if(!Auth::check()){
+        if (!Auth::check()) {
             $user = new User();
             $user->name = $request->firstname . " " . $request->lastname;
             $user->gender = $request->gender;
@@ -802,29 +825,24 @@ class FrontendController extends Controller
             $user->save();
             $UserID = $user->id;
         }
-        if(Auth::check()){
+        if (Auth::check()) {
             $cartItems = \Cart::session($UserID)->getContent();
-        }
-        else{
+        } else {
             $cartItems = \Cart::session($session_id)->getContent();
         }
         $OrderRefKey = Str::random(50);
-
         // $session_id = $request->session()->get('session_id');
         $Order = new Order;
-        if(Auth::check()){
+        if (Auth::check()) {
             $Order->customer_id = Auth()->user()->id;
-        }
-        else{
+        } else {
             $Order->customer_id = $user->id;
-
         }
         $Order->first_name = $request->firstname;
         $Order->last_name = $request->last_name;
-        if(Auth::check()){
+        if (Auth::check()) {
             $Order->full_name = Auth()->user()->name;
-        }
-        else{
+        } else {
             $Order->full_name = $user->name;
         }
         $Order->email = $request->email;
@@ -837,10 +855,10 @@ class FrontendController extends Controller
         $Order->status = 1;
         $Order->ref_key = $OrderRefKey;
         $Order->referrer = $request->refer;
-        if($request->couponentered == 1){
-            if(isset($request->code)){
+        if ($request->couponentered == 1) {
+            if (isset($request->code)) {
                 $Order->coupon_code = $request->code;
-                $couponcode = CouponCode::where('code',$request->code)->first();
+                $couponcode = CouponCode::where('code', $request->code)->first();
                 $Order->coupon_type = $couponcode->coupon_type;
                 $Order->coupon_value = $couponcode->discountvalue;
             }
@@ -849,9 +867,9 @@ class FrontendController extends Controller
             $Order->payment_gateway = "Take Payment";
             $Order->takepayment_status = "Pending";
         }
-        if($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null ){
-            $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term; 
-        } 
+        if ($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null) {
+            $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term;
+        }
         $Order->save();
         foreach ($cartItems as $ci) {
             $OrderPro = new OrderProduct;
@@ -860,40 +878,38 @@ class FrontendController extends Controller
             $OrderPro->quantity = 1;
             $OrderPro->price = $ci->price;
             $Test = Test::find($ci->associatedModel->id);
-            if($Test->category == 5 || (isset($Test->category_detail->parent_category_detail)&&$Test->category_detail->parent_category_detail==12)){ 
+            if ($Test->category == 5 || (isset($Test->category_detail->parent_category_detail) && $Test->category_detail->parent_category_detail == 12)) {
                 //For Laser Only
                 $Quantity = $request->session;
                 $replacement = "";
-                $OrderPro->quantity = str_replace('x' , $replacement , $Quantity);
-                $OrderPro->session = str_replace('x' , $replacement , $Quantity);
-            }
-            else{
+                $OrderPro->quantity = str_replace('x', $replacement, $Quantity);
+                $OrderPro->session = str_replace('x', $replacement, $Quantity);
+            } else {
                 $OrderPro->quantity = $ci->quantity;
             }
 
-            if($Test->category == 10 || $Test->id == 116){
+            if ($Test->category == 10 || $Test->id == 116) {
                 $OrderPro->quantity = $ci->quantity;
                 $OrderPro->session = $ci->quantity;
-                if($request->package_id != ""){
+                if ($request->package_id != "") {
                     $OrderPro->package = $request->package_id;
-                }
-                else{
+                } else {
                     $OrderPro->package = 8;
                 }
             }
-            
+
             $OrderPro->total = $request->grandtotal;
             $OrderPro->booking_time = $request->bookingtime;
-            $OrderPro->booking_date = date('Y-m-d',strtotime($request->bookingdate));
+            $OrderPro->booking_date = date('Y-m-d', strtotime($request->bookingdate));
             $OrderPro->booking_start_time = $request->bookingstarttime;
             $OrderPro->booking_end_time = $request->bookingendtime;
             $OrderPro->save();
 
-            if($Test->category == 9){
+            if ($Test->category == 9) {
                 $cartinfo = new CartInfo();
                 $cartinfo->order_id = $Order->id;
                 $cartinfo->order_product_id = $OrderPro->id;
-                $cartinfo->booking_date = date('Y-m-d',strtotime($request->bookingdate));
+                $cartinfo->booking_date = date('Y-m-d', strtotime($request->bookingdate));
                 $cartinfo->booking_time = $request->bookingtime;
                 $cartinfo->booking_start_time = $request->bookingstarttime;
                 $cartinfo->booking_end_time = $request->bookingendtime;
@@ -912,7 +928,7 @@ class FrontendController extends Controller
             $App->name = $request->firstname . " " . $request->lastname;
             $App->email = $request->email;
             $App->phone = $request->contact;
-            $App->appointment_date = date('Y-m-d',strtotime($request->bookingdate));
+            $App->appointment_date = date('Y-m-d', strtotime($request->bookingdate));
             $App->appointment_start_time = $request->bookingstarttime;
             $App->appointment_end_time = $request->bookingendtime;
             $App->appointment_time = $request->bookingtime;
@@ -920,7 +936,7 @@ class FrontendController extends Controller
             $App->order_id = $Order->id;
             $App->test_id = $ci->associatedModel->id;
             $data = $Order->id . '-' . $OrderPro->id;
-            $barcode = DNS1D::getBarcodePNG($data, 'C39',1,33,array(0,0,0),true);
+            $barcode = DNS1D::getBarcodePNG($data, 'C39', 1, 33, array(0, 0, 0), true);
             $barcodedata = base64_decode($barcode);
             $QRPath  = "customers/orders/bar-codes/" . $Order->id . '-' . $OrderPro->id . ".png";
             file_put_contents($QRPath, $barcodedata);
@@ -928,20 +944,19 @@ class FrontendController extends Controller
             $App->sample_barcode = 1;
             $App->save();
 
-            if($Test->category == 5 || (isset($Test->category_detail->parent_category_detail)&&$Test->category_detail->parent_category_detail==12)){
-                for($x = 0; $x < $OrderPro->quantity; $x++){
+            if ($Test->category == 5 || (isset($Test->category_detail->parent_category_detail) && $Test->category_detail->parent_category_detail == 12)) {
+                for ($x = 0; $x < $OrderPro->quantity; $x++) {
                     $Appsession = new Appointments_Sessions();
                     $Appsession->appointment_id = $App->id;
                     $Appsession->status = 0;
                     $Appsession->price = $ci->price;
-                    if($x == 0){
-                        $Appsession->appointment_date = date('Y-m-d',strtotime($request->bookingdate));
+                    if ($x == 0) {
+                        $Appsession->appointment_date = date('Y-m-d', strtotime($request->bookingdate));
                         $Appsession->appointment_time = $request->bookingstarttime . '-' . $request->bookingendtime;
                     }
-                    if($request->isbooking == 0){
+                    if ($request->isbooking == 0) {
                         $Appsession->payment_collect = "1";
-                    }
-                    else{
+                    } else {
                         $Appsession->payment_collect = "0";
                     }
                     $Appsession->save();
@@ -955,24 +970,198 @@ class FrontendController extends Controller
         Auth::logout();
         $IsBooking = $request->isbooking;
         if (setting('take-payment.status') == "1") {
-            if($IsBooking == 0){
+            if ($IsBooking == 0) {
                 return response()->json([
                     "status" => "success",
                     "redirect" => '/checkout/payment-proceed/' . $Order->id . '?is_booking=' . $IsBooking,
                     "message" => "Please wait. We are processing your order",
                 ]);
-            }
-            else{
+            } else {
                 dispatch(new NewOrderEmailJob($Order->id, $request->email, "customer"));
-                $NotificationEmails = explode(",",env("NOTIFICATION_EMAILS"));
-                foreach($NotificationEmails as $NE) {
+                $NotificationEmails = explode(",", env("NOTIFICATION_EMAILS"));
+                foreach ($NotificationEmails as $NE) {
                     dispatch(new NewOrderEmailJob($Order->id, $NE, "admin"));
                 }
-                dispatch(new AppointmentEmailJob($Order->id,$request->email));
+                dispatch(new AppointmentEmailJob($Order->id, $request->email));
                 $this->SendAppointmentEmail($Order->id, $request->email);
-                    return response()->json([
+                return response()->json([
                     "status" => "success",
                     "redirect" => 'checkout/success?is_booking=' . $IsBooking . '&no=' . $Order->id,
+                    "message" => "Your Order placed successfully",
+                ]);
+                // return redirect('checkout/success?is_booking=' . $IsBooking)->with('success', 'Your order placed successfully');
+            }
+        }
+    }
+    public function in_clinic_login_submit(Request $request)
+    {
+        $session_id = $this->generate_sessions($request);
+        $user = User::where('email', $request->email)->first();
+        $UserID = $user->id;
+        $OrderRefKey = Str::random(50);
+        $cartItems = $this->cart_items($request);
+        // dd($cartItems);
+        $Order = new Order;
+        $Order->customer_id = $user->id;
+        $Order->first_name = $user->firstname;
+        $Order->last_name = $user->last_name;
+        $Order->full_name = $user->name;
+        $Order->email = $user->email;
+        $Order->contact_no = $user->contactno;
+        $Order->gender = $user->gender;
+        $Order->order_total = $request->grandtotal;
+        $Order->address = "Aa Business Centre, 326-340, Dunstable Rd, Maidenhall, Luton LU4 8JS, United Kingdom";
+        $Order->appointment = 1;
+        $Order->status = 1;
+        $Order->ref_key = $OrderRefKey;
+        $Order->referrer = $request->refer;
+        if ($request->couponentered == 1) {
+            if (isset($request->code)) {
+                $Order->coupon_code = $request->code;
+                $couponcode = CouponCode::where('code', $request->code)->first();
+                $Order->coupon_type = $couponcode->coupon_type;
+                $Order->coupon_value = $couponcode->discountvalue;
+            }
+        }
+        // $Order->campaign_sources = $utm;
+
+        // if(setting('payment-gateway.status') == "1")  {
+        //     $Order->payment_gateway = "Stripe";
+        // }
+        // if($request->direct_order == "1") {
+        //     $Order->payment_gateway = "Square";
+        // }
+        if (setting('take-payment.status') == "1") {
+            $Order->payment_gateway = "Take Payment";
+            $Order->takepayment_status = "Pending";
+        }
+        if ($request->utm_source != null ||  $request->utm_medium != null || $request->utm_campaign != null || $request->utm_term != null) {
+            $Order->campaign_sources = $request->utm_source . ',' . $request->utm_medium . ',' . $request->utm_campaign . ',' . $request->utm_term;
+        }
+        $Order->save();
+        foreach ($cartItems as $ci) {
+            $OrderPro = new OrderProduct;
+            $OrderPro->test_id = $ci->associatedModel->id;
+            $OrderPro->order_id = $Order->id;
+            $OrderPro->quantity = 1;
+            $OrderPro->price = $ci->price;
+            $Test = Test::find($ci->associatedModel->id);
+            // if($Test->category == 5 || $Test->category_detail->parent_category_detail->id == 12){ 
+
+            if ($Test->category == 5 || (isset($Test->category_detail->parent_category_detail) && $Test->category_detail->parent_category_detail->id == 12)) {
+                //For Laser Only
+                $Quantity = $request->session;
+                $replacement = "";
+                $OrderPro->quantity = str_replace('x', $replacement, $Quantity);
+                $OrderPro->session = str_replace('x', $replacement, $Quantity);
+            } else {
+                $OrderPro->quantity = $ci->quantity;
+                $OrderPro->session = $ci->quantity;
+            }
+
+            if ($Test->category == 10 || $Test->id == 116) {
+                if ($request->package_id != "") {
+                    $OrderPro->package = $request->package_id;
+                } else {
+                    $OrderPro->package = 8;
+                }
+                $OrderPro->quantity = $ci->quantity;
+                $OrderPro->session = $ci->quantity;
+            }
+            // $OrderPro->test_price = $ci->price;
+            $OrderPro->total = $request->grandtotal;
+            $OrderPro->booking_time = $request->bookingtime;
+            $OrderPro->booking_date = date('Y-m-d', strtotime($request->bookingdate));
+            $OrderPro->booking_start_time = $request->bookingstarttime;
+            $OrderPro->booking_end_time = $request->bookingendtime;
+            $OrderPro->save();
+
+            if ($Test->category == 9) {
+                $cartinfo = new CartInfo();
+                $cartinfo->order_id = $Order->id;
+                $cartinfo->order_product_id = $OrderPro->id;
+                $cartinfo->booking_date = date('Y-m-d', strtotime($request->bookingdate));
+                $cartinfo->booking_time = $request->bookingtime;
+                $cartinfo->booking_start_time = $request->bookingstarttime;
+                $cartinfo->booking_end_time = $request->bookingendtime;
+                $cartinfo->first_name = $user->name;
+                // $cartinfo->last_name = $user->lastname;
+                $cartinfo->email = $user->email;
+                $cartinfo->phone = $user->contact_no;
+                $cartinfo->gender = $user->gender;
+                $cartinfo->dob = $user->date_of_birth;
+                // $cartinfo->address = $request->address;
+                $cartinfo->save();
+                $Order->covid = 1;
+                $Order->save();
+            }
+
+            $App = new Appointment();
+            $App->name = $user->firstname . " " . $user->lastname;
+            $App->email = $user->email;
+            $App->phone = $user->contact;
+            $App->appointment_date = date('Y-m-d', strtotime($request->bookingdate));
+            $App->appointment_start_time = $request->bookingstarttime;
+            $App->appointment_end_time = $request->bookingendtime;
+            $App->appointment_time = $request->bookingtime;
+            $App->subject = $Test->title;
+            $App->order_id = $Order->id;
+            $App->test_id = $ci->associatedModel->id;
+            $data = $Order->id . '-' . $OrderPro->id;
+            $barcode = DNS1D::getBarcodePNG($data, 'C39', 1, 33, array(0, 0, 0), true);
+            $barcodedata = base64_decode($barcode);
+            $QRPath  = "customers/orders/bar-codes/" . $Order->id . '-' . $OrderPro->id . ".png";
+            file_put_contents($QRPath, $barcodedata);
+            $App->sample_barcode_img = $QRPath;
+            $App->sample_barcode = 1;
+            $App->save();
+
+            // if($Test->category == 5 || $Test->category_detail->parent_category_detail->id == 12){
+
+            if ($Test->category == 5 || (isset($Test->category_detail->parent_category_detail) && $Test->category_detail->parent_category_detail->id == 12)) {
+
+
+                for ($x = 0; $x < $OrderPro->quantity; $x++) {
+                    $Appsession = new Appointments_Sessions();
+                    $Appsession->appointment_id = $App->id;
+                    $Appsession->status = 0;
+                    $Appsession->price = $ci->price;
+                    if ($x == 0) {
+                        $Appsession->appointment_date = date('Y-m-d', strtotime($request->bookingdate));
+                        $Appsession->appointment_time = $request->bookingstarttime . '-' . $request->bookingendtime;
+                    }
+                    if ($request->isbooking == 0) {
+                        $Appsession->payment_collect = "1";
+                    } else {
+                        $Appsession->payment_collect = "0";
+                    }
+                    $Appsession->save();
+                }
+            }
+        }
+        \Cart::clear();
+        \Cart::session($UserID)->clear();
+        \Cart::session($session_id)->clear();
+        $request->session()->forget('session_id');
+        Auth::logout();
+        $IsBooking = $request->isbooking;
+        if (setting('take-payment.status') == "1") {
+            if ($IsBooking == 0) {
+                return response()->json([
+                    "status" => "success",
+                    "redirect" => '/checkout/payment-proceed/' . $Order->id . '?is_booking=' . $IsBooking,
+                    "message" => "Please wait. We are processing your order",
+                ]);
+            } else {
+                dispatch(new NewOrderEmailJob($Order->id, $request->email, "customer"));
+                $NotificationEmails = explode(",", env("NOTIFICATION_EMAILS"));
+                foreach ($NotificationEmails as $NE) {
+                    dispatch(new NewOrderEmailJob($Order->id, $NE, "admin"));
+                }
+                dispatch(new AppointmentEmailJob($Order->id, $request->email));
+                return response()->json([
+                    "status" => "success",
+                    "redirect" => 'checkout/success?is_booking=' . $IsBooking . "&no=" . $Order->id,
                     "message" => "Your Order placed successfully",
                 ]);
                 // return redirect('checkout/success?is_booking=' . $IsBooking)->with('success', 'Your order placed successfully');
@@ -983,6 +1172,7 @@ class FrontendController extends Controller
     {
         // retu$oid;
         $tickers = $this->tickers();
+        $services = $this->services();
         $utm = $this->utmsources();
         $header_links = $this->content_links('1');
         $footer_links = $this->content_links('2');
@@ -993,64 +1183,65 @@ class FrontendController extends Controller
         $cart_items = $this->cart_items($request);
         $this->marketing_campaign($request);
         $OrderInfo = Order::find($oid);
-        if (setting('take-payment.status') == "1") {
-            $UniqueID = Str::random(10);
-            $callback = url('/') . "/take-payment/customer-response/order/"  . $OrderInfo->id . "/success";
-            $redirectback = url('/') . "/take-payment/customer-response/order/"  . $OrderInfo->id . "/failure";
-            $CustPhone = $OrderInfo->contact_no;
-            if (empty($CustPhone)) {
-                $CustPhone = "03222443584";
-            }
-            $CustPostCode = $OrderInfo->postal_code;
-            if (empty($CustPostCode)) {
-                $CustPostCode = "LU4 8JS";
-            }
-            $OrderInfo->takepayment_unique_ref = $UniqueID;
-            $OrderInfo->save();
-            $formdata = array(
-                "merchantID"        => setting('take-payment.merchant_id'),
-                "amount"            => str_replace('.', '', $OrderInfo->order_total),
-                "action"            => "SALE",
-                "type"              => 1,
-                "countryCode"       => setting('take-payment.country_code'),
-                "currencyCode"      => setting('take-payment.currency_code'),
-                "transactionUnique" => $UniqueID,
-                "orderRef"          => "#OBM" . $OrderInfo->id,
-                "redirectURL"       => $redirectback,
-                "callbackURL"         => $callback,
-                "formResponsive"    => "Y",
-                "customerName"      => $OrderInfo->customer_detail->name,
-                "customerAddress"   => $OrderInfo->address,
-                "customerPostCode"  => $CustPostCode,
-                "customerEmail"     => $OrderInfo->customer_detail->email,
-                "customerPhone"     => $CustPhone,
-                "item1Description"  => "#OBM" . $OrderInfo->id,
-                "item1Quantity"     => 1,
-                "item1GrossValue"   => str_replace('.', '', $OrderInfo->order_total)
-            );
-            ksort($formdata);
-            //return $formdata;
-            $SignatureKey = http_build_query($formdata, '', '&') . setting('take-payment.merchant_secret');
-            $SignatureKey = hash('SHA512', $SignatureKey);
+        // if (setting('take-payment.status') == "1") {
+        //     $UniqueID = Str::random(10);
+        //     $callback = url('/') . "/take-payment/customer-response/order/"  . $OrderInfo->id . "/success";
+        //     $redirectback = url('/') . "/take-payment/customer-response/order/"  . $OrderInfo->id . "/failure";
+        //     $CustPhone = $OrderInfo->contact_no;
+        //     if (empty($CustPhone)) {
+        //         $CustPhone = "03222443584";
+        //     }
+        //     $CustPostCode = $OrderInfo->postal_code;
+        //     if (empty($CustPostCode)) {
+        //         $CustPostCode = "LU4 8JS";
+        //     }
+        //     $OrderInfo->takepayment_unique_ref = $UniqueID;
+        //     $OrderInfo->save();
+        //     $formdata = array(
+        //         "merchantID"        => setting('take-payment.merchant_id'),
+        //         "amount"            => str_replace('.', '', $OrderInfo->order_total),
+        //         "action"            => "SALE",
+        //         "type"              => 1,
+        //         "countryCode"       => setting('take-payment.country_code'),
+        //         "currencyCode"      => setting('take-payment.currency_code'),
+        //         "transactionUnique" => $UniqueID,
+        //         "orderRef"          => "#OBM" . $OrderInfo->id,
+        //         "redirectURL"       => $redirectback,
+        //         "callbackURL"         => $callback,
+        //         "formResponsive"    => "Y",
+        //         "customerName"      => $OrderInfo->customer_detail->name,
+        //         "customerAddress"   => $OrderInfo->address,
+        //         "customerPostCode"  => $CustPostCode,
+        //         "customerEmail"     => $OrderInfo->customer_detail->email,
+        //         "customerPhone"     => $CustPhone,
+        //         "item1Description"  => "#OBM" . $OrderInfo->id,
+        //         "item1Quantity"     => 1,
+        //         "item1GrossValue"   => str_replace('.', '', $OrderInfo->order_total)
+        //     );
+        //     ksort($formdata);
+        //     //return $formdata;
+        //     $SignatureKey = http_build_query($formdata, '', '&') . setting('take-payment.merchant_secret');
+        //     $SignatureKey = hash('SHA512', $SignatureKey);
 
-            return view('success', compact(
-                'tickers',
-                'utm',
-                'categories',
-                'cart_items',
-                'header_links',
-                'footer_links',
-                'OrderInfo',
-                'SignatureKey',
-                'UniqueID',
-                'callback',
-                'redirectback',
-                'CustPhone',
-                'CustPostCode',
-                'blogcategories',
-                'laser_location'
-            ));
-        } else {
+        //     return view('success', compact(
+        //         'tickers',
+        //         'utm',
+        //         'categories',
+        //         'cart_items',
+        //         'header_links',
+        //         'footer_links',
+        //         'OrderInfo',
+        //         'SignatureKey',
+        //         'UniqueID',
+        //         'callback',
+        //         'redirectback',
+        //         'CustPhone',
+        //         'CustPostCode',
+        //         'blogcategories',
+        //         'laser_location',
+        //         'services'
+        //     ));
+        // } else {
             return view('success', compact(
                 'tickers',
                 'utm',
@@ -1062,15 +1253,15 @@ class FrontendController extends Controller
                 'laser_location',
                 'blogcategories',
                 'OrderInfo',
+                'services'
             ));
-        }
+        // }
     }
     public function check_email($email)
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $duplicate = 0;
-        }
-        else{
+        } else {
             $duplicate = User::where('email', $email)->count();
         }
         if ($duplicate > 0) {
@@ -1081,13 +1272,38 @@ class FrontendController extends Controller
                 "status" => "exist",
                 "user_id" => $userdata->id,
             ]);
-        }
-        else {
+        } else {
             return response()->json([
                 'message' => 'We cannot find any account associated with this email',
                 "status" => "notexist",
             ]);
         }
     }
+    public function checkout_success_payment_final(Request $request, $oid)
+    {
+        $tickers = $this->tickers();
+        $utm = $this->utmsources();
+        $header_links = $this->content_links('1');
+        $footer_links = $this->content_links('2');
+        $categories = $this->categories();
+        // $blogcategories = $this->blog_categories();
+        $laser_location = $this->laser_locations();
+        $trustedcompanies = $this->trusted_companies();
+        $cart_items = $this->cart_items($request);
+        $this->marketing_campaign($request);
+        $OrderInfo = Order::find($oid);
 
+        return view('success_payment', compact(
+            'tickers',
+            'utm',
+            'categories',
+            'trustedcompanies',
+            'header_links',
+            'footer_links',
+            'cart_items',
+            'OrderInfo',
+            'laser_location',
+            // 'blogcategories'
+        ));
+    }
 }
