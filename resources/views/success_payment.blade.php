@@ -46,10 +46,10 @@ Wellness by Dr.Sophia - Order Placed
                                             <i class="fa fa-solid fa-circle-check fa-6x" style="color:green;"></i>
                                             <hr>
                                             <h5>Thank you for your order</h5>
-                                            {{-- <h3 style="color: #0042b9;text-transform: uppercase">Energy Blood test kit</h3> --}}
+                                            {{-- <h3 style="color: #0E8BA1;text-transform: uppercase">Energy Blood test kit</h3> --}}
                                             {{-- <p style="text-align: left; padding-left: 5%;background-color: #ebf0fa; width: 30%;">
                                                     <span>
-                                                        <i class="fa fa-solid fa-circle-check" style="color:#0042b9;"></i>
+                                                        <i class="fa fa-solid fa-circle-check" style="color:#0E8BA1;"></i>
                                                     </span>
                                                     In Clinic
                                                 </p> --}}
@@ -73,7 +73,7 @@ Wellness by Dr.Sophia - Order Placed
                                                     @foreach($OrderDetail->order_products as $op)
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <p style="color: #0042b9;text-transform: uppercase font-size:12px !important;">{{$op->product_detail->title}} <span style="color:green; font-size:12px;">@if($op->product_detail->category == 5 || $op->product_detail->category_detail->parent_category_detail->id == 12) (Session: {{$op->quantity}}x) @elseif($op->product_detail->category == 10 || $op->product_detail->id == 116) (Package: {{$op->package_detail->title}}) @else (Quantity: {{$op->quantity}}x) </span>@endif</p>
+                                                            <p style="color: #0E8BA1;text-transform: uppercase font-size:12px !important;">{{$op->product_detail->title}} <span style="color:green; font-size:12px;">@if($op->product_detail->category == 5 || $op->product_detail->category_detail->parent_category_detail->id == 12) (Session: {{$op->quantity}}x) @elseif($op->product_detail->category == 10 || $op->product_detail->id == 116) (Package: {{$op->package_detail->title}}) @else (Quantity: {{$op->quantity}}x) </span>@endif</p>
                                                         </div>
                                                         <div class="col-4">
                                                             <p style="color: #000000;text-transform: uppercase font-size:12px !important;">
@@ -181,10 +181,10 @@ Wellness by Dr.Sophia - Order Placed
                                             <i class="fa fa-solid fa-circle-check fa-6x" style="color:green;"></i>
                                             <hr>
                                             <h5>Thank you for your order</h5>
-                                            {{-- <h3 style="color: #0042b9;text-transform: uppercase">Energy Blood test kit</h3> --}}
+                                            {{-- <h3 style="color: #0E8BA1;text-transform: uppercase">Energy Blood test kit</h3> --}}
                                             {{-- <p style="text-align: left; padding-left: 5%;background-color: #ebf0fa; width: 30%;">
                                                     <span>
-                                                        <i class="fa fa-solid fa-circle-check" style="color:#0042b9;"></i>
+                                                        <i class="fa fa-solid fa-circle-check" style="color:#0E8BA1;"></i>
                                                     </span>
                                                     In Clinic
                                                 </p> --}}
@@ -208,7 +208,7 @@ Wellness by Dr.Sophia - Order Placed
                                                     @foreach($OrderDetail->order_products as $op)
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <p style="color: #0042b9;text-transform: uppercase font-size:12px !important;">{{$op->product_detail->title}} <span style="color:green; font-size:12px;">@if($op->product_detail->category == 5 || $op->product_detail->category_detail->parent_category_detail->id == 12) (Session: {{$op->quantity}}x) @elseif($op->product_detail->category == 10 || $op->product_detail->id == 116) (Package: {{$op->package_detail->title}}) @else (Quantity: {{$op->quantity}}x) </span>@endif</p>
+                                                            <p style="color: #0E8BA1;text-transform: uppercase font-size:12px !important;">{{$op->product_detail->title}} <span style="color:green; font-size:12px;">@if($op->product_detail->category == 5 || $op->product_detail->category_detail->parent_category_detail->id == 12) (Session: {{$op->quantity}}x) @elseif($op->product_detail->category == 10 || $op->product_detail->id == 116) (Package: {{$op->package_detail->title}}) @else (Quantity: {{$op->quantity}}x) </span>@endif</p>
                                                         </div>
                                                         <div class="col-4">
                                                             <p style="color: #000000;text-transform: uppercase font-size:12px !important;">

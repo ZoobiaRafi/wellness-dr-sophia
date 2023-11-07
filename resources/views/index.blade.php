@@ -8,6 +8,57 @@ Wellness by Dr.Sophia - Home
 @endsection
 
 @section('css')
+<style>
+    .image-overlay {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .image-overlay::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1D66735C;
+        /* Background color with transparency */
+        z-index: 1;
+        /* Position the overlay above the image */
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        /* Position the button above the overlay */
+    }
+
+    .play-button i {
+        font-size: 48px;
+        color: #0E8BA1;
+        /* Button color */
+        animation: pulse 2s infinite;
+        /* Pulse animation */
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
 @endsection
 
 @section('content')
@@ -95,15 +146,21 @@ Wellness by Dr.Sophia - Home
 
     <section class="video">
         <div class="container">
-            <h4> Why Choose Us</h4>
+            <h4>Why Choose Us</h4>
             <hr>
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12">
-                    <img src="/assets/images/video.webp" class="img-fluid w-100" alt="video">
+                    <div class="image-overlay">
+                        <img src="/assets/images/video2.webp" class="img-fluid w-100" alt="video">
+                        <div class="play-button">
+                            <a href="#"><i class="fa-solid fa-circle-play"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <section class="about-me" style="background: url('assets/images/luxury-bg.webp') 100% 100%;">
         <div class="container">
@@ -571,78 +628,36 @@ Wellness by Dr.Sophia - Home
             </div>
             <div id="blogsCarousel" class="new-full-image-blog carousel slide" data-aos="zoom-in">
                 <div class="carousel-inner">
-                    <div class="carousel-item active ">
+                    @foreach ($blogs->chunk(3) as $chunk)
+                    <div class="carousel-item{{ $loop->first ? ' active' : '' }}">
                         <div class="row px-3">
-                            <!-- blog 1 -->
+                            @foreach ($chunk as $blog)
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
+                                        <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
-                                            <p class="para-head">Getting Glam for the Event: Your Ultimate Pre-Party
-                                                Preparation Guide
+                                            <p class="para-head">
+                                                <a href="/blogs/{{ $blog->slug }}" class="para-head">{{ $blog->title }}</a>
                                             </p>
                                             <div class="d-flex">
                                                 <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
+                                                    <a href="/blogs/{{ $blog->slug }}" class="read-more">
                                                         Read More <span><i class="fa-solid fa-angles-right"></i></span>
                                                     </a>
                                                 </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
+                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">{{ date('d M Y', strtotime($blog->created_at)) }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- blog 2 -->
-                            <div class="col-md-4 px-3">
-                                <div class="card text-start">
-                                    <div class="card-img-top">
-                                        <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
-                                    </div>
-                                    <div class="card-body d-flex flex-column justify-content-center">
-                                        <div>
-                                            <p class="para-head">Winter Skin Care: Protecting and Nourishing Your
-                                                Skin During the Cold
-                                                Months</p>
-                                            <div class="d-flex">
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
-                                                        Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                                    </a>
-                                                </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- blog 3 -->
-                            <div class="col-md-4 px-3">
-                                <div class="card text-start">
-                                    <div class="card-img-top">
-                                        <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
-                                    </div>
-                                    <div class="card-body d-flex flex-column justify-content-center">
-                                        <div>
-                                            <p class="para-head">Unlocking the Power of Derma Fillers: An Expert
-                                                Spotlight</p>
-                                            <div class="d-flex">
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
-                                                        Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                                    </a>
-                                                </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <button class="carousel-control-prev justify-content-start w-auto" type="button" data-bs-target="#blogsCarousel" data-bs-slide="prev">
                     <span class="fas fa-chevron-left text-primary" aria-hidden="true"></span>
@@ -666,26 +681,27 @@ Wellness by Dr.Sophia - Home
             </div>
             <div id="blogsCarousel2" class="new-full-image-blog  carousel slide" data-aos="zoom-in">
                 <div class="carousel-inner">
-                    <div class="carousel-item active ">
+                    @foreach ($blogs as $key => $blog)
+                    <div class="carousel-item @if($key === 0) active @endif">
                         <div class="row px-2">
                             <!-- blog 1 -->
                             <div class="col-md-4 px-3">
                                 <div class="card text-start">
                                     <div class="card-img-top">
-                                        <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
+                                        <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
                                     </div>
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <div>
-                                            <p class="para-head">Getting Glam for the Event: Your Ultimate Pre-Party
-                                                Preparation Guide
+                                            <p class="para-head">
+                                                <a href="/blogs/{{$blog->slug}}" class="para-head">{{$blog->title}}</a>
                                             </p>
                                             <div class="d-flex">
                                                 <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
+                                                    <a href="/blogs/{{$blog->slug}}" class="read-more">
                                                         Read More <span><i class="fa-solid fa-angles-right"></i></span>
                                                     </a>
                                                 </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
+                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -693,60 +709,7 @@ Wellness by Dr.Sophia - Home
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="row px-2">
-                            <!-- blog 2 -->
-                            <div class="col-md-4 px-3">
-                                <div class="card text-start">
-                                    <div class="card-img-top">
-                                        <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
-                                    </div>
-                                    <div class="card-body d-flex flex-column justify-content-center">
-                                        <div>
-                                            <p class="para-head">Winter Skin Care: Protecting and Nourishing Your
-                                                Skin During the Cold
-                                                Months</p>
-                                            <div class="d-flex">
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
-                                                        Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                                    </a>
-                                                </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row px-2">
-                            <!-- blog 3 -->
-                            <div class="col-md-4 px-3">
-                                <div class="card text-start">
-                                    <div class="card-img-top">
-                                        <img src="/assets/images/blog-4.webp" class="img-fluid w-100" alt="blog">
-                                    </div>
-                                    <div class="card-body d-flex flex-column justify-content-center">
-                                        <div>
-                                            <p class="para-head">Unlocking the Power of Derma Fillers: An Expert
-                                                Spotlight</p>
-                                            <div class="d-flex">
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                                    <a href="blog-detail.html" class="read-more">
-                                                        Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                                    </a>
-                                                </p>
-                                                <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
                 <button class="carousel-control-prev justify-content-start w-auto" type="button" data-bs-target="#blogsCarousel2" data-bs-slide="prev">
                     <span class="fas fa-chevron-left text-primary" aria-hidden="true"></span>

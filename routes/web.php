@@ -38,6 +38,7 @@ Route::post("/in/clinic/submit", [FrontendController::class , 'in_clinic_submit'
 Route::post("/in/clinic/login/submit", [FrontendController::class , 'in_clinic_login_submit'])->name('in_clinic_login_submit');
 Route::get('/check/{email}', [FrontendController::class, 'check_email'])->name('check_email');
 Route::get('/checkout/success/{oid}', [FrontendController::class, 'checkout_success_payment_final'])->name('checkout.success.payment.final');
+Route::get('checkout/success', [FrontendController::class, 'checkout_success_final'])->name('checkout.success.final');
 
 
 // Route::group(['prefix' => 'admin'], function () {

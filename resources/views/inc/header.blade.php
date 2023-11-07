@@ -21,7 +21,7 @@
                         @foreach($services as $s)
                             <li><a href="{{url('treatments/'.$s->slug)}}" class="dropdown-lsit">{{ucwords($s->title)}}</a></li>
                         @endforeach
-                            <li><a href="packages.html" class="dropdown-lsit">Packages & Promotions</a></li>
+                            <!-- <li><a href="packages.html" class="dropdown-lsit">Packages & Promotions</a></li> -->
                         </ul>
                     </li>
 
@@ -82,7 +82,7 @@
                                                     @endforeach
 
                                                     <div class="col-12 border_left" style="vertical-align: middle;">
-                                                        <a href="packages.html">Packages & Promotions</a>
+                                                        <!-- <a href="packages.html">Packages & Promotions</a> -->
                                                     </div>
                                                 </div>
                                             </div>

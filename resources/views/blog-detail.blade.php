@@ -9,6 +9,7 @@ Wellness by Dr.Sophia - Blogs - {{$thisBlog->title}}
 @endsection
 
 @section('css')
+
 @endsection
 
 @section('content')
@@ -27,10 +28,10 @@ Wellness by Dr.Sophia - Blogs - {{$thisBlog->title}}
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-lg-8 px-3">
-                <img src="/storage/{{ $thisBlog->blog_img_1 }}" alt="Nourishing" class="img-top img-fluid">
+                <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $thisBlog->blog_img_1 }}" alt="Nourishing" class="img-top img-fluid">
                 <h4>{{$thisBlog->title}}</h4>
                     {!!$thisBlog->content_1!!}
-                <img src="/storage/{{ $thisBlog->blog_img_2 }}" alt="Nourishing" class="img-top img-fluid">
+                <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $thisBlog->blog_img_2 }}" alt="Nourishing" class="img-top img-fluid">
                 {!!$thisBlog->content_2!!}
                 </div>
                 <div class="col-md-3 col-sm-3 col-lg-3 mt-3 d-none d-md-block">
@@ -40,7 +41,7 @@ Wellness by Dr.Sophia - Blogs - {{$thisBlog->title}}
                         <div class="row pt-3">
                             @foreach($blogs as $blog)
                             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                                <img src="/storage/{{ $blog->image }}" alt="{{$blog->slug}}">
+                                <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $blog->image }}" alt="{{$blog->slug}}">
                             </div>
                             <div class="col-10 col-md-10 col-sm-10 col-lg-10">
                                 <p>

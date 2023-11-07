@@ -48,7 +48,7 @@ Wellness by Dr.Sophia - Blogs
                 <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
+                            <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
@@ -361,50 +361,30 @@ Wellness by Dr.Sophia - Blogs
                 </div>
             </div>
             <div class="row d-flex align-items-center justify-content-center">
-                <div class="col-md-4 col-sm-4 col-lg-4 px-3">
+                @foreach ($blogs->take(2) as $blog)
+                <div class="col-md-4 col-sm-4 col-lg-4 px-1 py-1">
                     <div class="card text-start">
                         <div class="card-img-top">
-                            <img src="/assets/images/blog-1.webp" class="img-fluid w-100" alt="blog">
+                            <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $blog->image }}" alt="{{$blog->slug}}" class="img-fluid w-100">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div>
-                                <p class="para-head">Getting Glam for the Event: Your Ultimate Pre-Party
-                                    Preparation Guide
+                                <p class="para-head">
+                                    <a href="/blogs/{{$blog->slug}}" class="para-head">{{$blog->title}}</a>
                                 </p>
                                 <div class="d-flex">
                                     <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
+                                        <a href="/blogs/{{$blog->slug}}" class="read-more">
                                             Read More <span><i class="fa-solid fa-angles-right"></i></span>
                                         </a>
                                     </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
+                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 px-3">
-                    <div class="card text-start">
-                        <div class="card-img-top">
-                            <img src="/assets/images/blog-2.webp" class="img-fluid w-100" alt="blog">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <div>
-                                <p class="para-head">Winter Skin Care: Protecting and Nourishing Your
-                                    Skin During the Cold
-                                    Months</p>
-                                <div class="d-flex">
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 mb-0">
-                                        <a href="blog-detail.html" class="read-more">
-                                            Read More <span><i class="fa-solid fa-angles-right"></i></span>
-                                        </a>
-                                    </p>
-                                    <p class="col-md-6 col-sm-6 col-lg-6 col-6 date">07 Aug 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

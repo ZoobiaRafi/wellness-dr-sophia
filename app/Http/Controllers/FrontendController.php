@@ -168,11 +168,11 @@ class FrontendController extends Controller
     }
     public function currentService($slug)
     {
-        return Category::where('slug', $slug)->where('status', 1)->first();
+        return Category::where('slug', $slug)->first();
     }
     public function currentServiceTreatments($id)
     {
-        return Test::where('category', $id)->where('status', 1)->get();
+        return Test::where('category', $id)->get();
     }
     public function servicesExcludeCurrent($id)
     {
@@ -180,7 +180,7 @@ class FrontendController extends Controller
     }
     public function currentTreatment($slug)
     {
-        return Test::where('slug', $slug)->where('status', 1)->first();
+        return Test::where('slug', $slug)->first();
     }
     public function currentBlog($slug)
     {
@@ -192,8 +192,10 @@ class FrontendController extends Controller
         $services = $this->services();
         $utm = $this->utmsources();
         $cart_items = $this->cart_items($request);
+        $blogs = WellnessBlog::where('status', 1)->get();
 
-        return view($view, compact('services', 'cart_items', 'utm'));
+
+        return view($view, compact('services', 'cart_items', 'utm', 'blogs'));
     }
     public function gallery(Request $request)
     {
@@ -1299,6 +1301,35 @@ class FrontendController extends Controller
             'OrderInfo',
             'laser_location',
             // 'blogcategories'
+        ));
+    }
+    public function checkout_success_final(Request $request)
+    {
+        $tickers = $this->tickers();
+        $header_links = $this->content_links('1');
+        $footer_links = $this->content_links('2');
+        $categories = $this->categories();
+        $blogcategories = $this->blog_categories();
+        $laser_location = $this->laser_locations();
+        $trustedcompanies = $this->trusted_companies();
+        $this->marketing_campaign($request);
+        $services = $this->services();
+        $utm = $this->utmsources();
+        $cart_items = $this->cart_items($request);
+        $blogs = WellnessBlog::where('status', 1)->get();
+
+        return view('success', compact(
+            'tickers',
+            'utm',
+            'categories',
+            'trustedcompanies',
+            'header_links',
+            'footer_links',
+            'cart_items',
+            'laser_location',
+            'blogcategories',
+            'blogs',
+            'services'
         ));
     }
 }

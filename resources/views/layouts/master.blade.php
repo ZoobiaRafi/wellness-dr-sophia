@@ -118,7 +118,7 @@
                             {{-- <a href="/{{ $value->associatedModel->category_detail->slug }}/{{ $value->associatedModel->slug }}"> --}}
                             <a href="#">
                                 <div class="position-relative" style="width: 100%; max-width: 125px; margin: 0 auto; background: #ddd">
-                                    <img alt="{{$value->name}}" class="img-fluid" src="/storage/{{ $value->associatedModel->image }}">
+                                    <img alt="{{$value->name}}" class="img-fluid" src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $value->associatedModel->image }}">
                                     <div class="item_quantity">{{ $value->quantity }}</div>
                                 </div>
                             </a>

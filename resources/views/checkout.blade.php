@@ -149,7 +149,7 @@ Wellness by Dr.Sophia - Checkout
                         @foreach ($cart_items as $key => $value)
                         <div class="row product">
                             <div class="col-md-3 col-lg-3 col-sm-3 col-3">
-                                <img src="/storage/{{ $value->associatedModel->image }}" alt="{{$value->associatedModel->slug}}">
+                                <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $value->associatedModel->image }}" alt="{{$value->associatedModel->slug}}">
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-6 col-6">
                                 <h6>{{$value->associatedModel->title}}</h6>
