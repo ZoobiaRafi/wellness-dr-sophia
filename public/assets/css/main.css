@@ -745,6 +745,7 @@ a {
 }
 
 .our-services .card h5 {
+  font-size: 18px;
   font-weight: 700;
   overflow: hidden;
   white-space: normal;
@@ -2020,6 +2021,9 @@ a {
   .our-services .card {
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+  .our-services .card .card-body .price {
+    font-size: 25px;
   }
 
   .our-services .card .service-img-div {

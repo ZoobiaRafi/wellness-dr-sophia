@@ -39,7 +39,7 @@ Wellness by Dr.Sophia - Checkout
         <div class="container">
             <div class="row d-flex align-items-start justify-content-center">
                 <div class="col-md-6 col-sm-6 col-lg-6 pb-3">
-                    <h2 class="text-center">Check out</h2>
+                    <h2 class="text-center">Checkout</h2>
                     <div class="inclinic">
                         <p>
                             <span><i class="fa-regular fa-circle-check"></i></span>
@@ -149,10 +149,12 @@ Wellness by Dr.Sophia - Checkout
                         @foreach ($cart_items as $key => $value)
                         <div class="row product">
                             <div class="col-md-3 col-lg-3 col-sm-3 col-3">
-                                <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $value->associatedModel->image }}" alt="{{$value->associatedModel->slug}}">
+                                <a href="{{url('/treatments/services/'.$value->associatedModel->slug)}}">
+                                    <img src="https://demo.optimizedbodyandmind.co.uk/storage/{{ $value->associatedModel->image }}" alt="{{$value->associatedModel->slug}}">
+                                </a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                <h6>{{$value->associatedModel->title}}</h6>
+                                <h6><a  href="{{url('/treatments/services/'.$value->associatedModel->slug)}}">{{$value->associatedModel->title}}</a></h6>
                                 <p class="sessions">Total Session : 1</p>
                             </div>
                             <div class="col-md-3 col-lg-3 col-sm-3 col-3">
@@ -334,7 +336,7 @@ Wellness by Dr.Sophia - Checkout
                             });
                         }
                     });
-                } 
+                }
             } else {
                 Swal.fire({
                     position: 'center',

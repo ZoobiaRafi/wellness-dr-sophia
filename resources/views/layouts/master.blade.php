@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @yield('metas')
-
-    <link rel="icon" href="assets/images/favicon.webp" type="image/x-icon">
+    <link data-n-head="ssr" data-hid="canonical" rel="canonical" href="{{ request()->url() }}">
+    <link rel="icon" href="/assets/images/favicon.webp" type="image/x-icon">
     <title>@yield('title')</title>
 
     @php
@@ -94,6 +94,11 @@
         }
         .test_price{
             color: #1d6673;
+        }
+        @media only screen and (max-width: 600px) {
+            .navbar-user a span.cart-num {
+                right: 30px;
+            }
         }
     </style>
     @yield('css')

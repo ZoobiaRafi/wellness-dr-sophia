@@ -685,7 +685,7 @@ class FrontendController extends Controller
 
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        return redirect('/my-cart' . $utm);
+        return response()->json(['redirect' => '/my-cart' . $utm]);
         return redirect()->route('cart.list');
     }
     public function cart_product(Request $request)

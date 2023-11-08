@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-Wellness by Dr.Sophia - Treatment
+Wellness by Dr.Sophia - Treatment - {{$thisTreatment->title}}
 @endsection
 
 @section('css')
@@ -27,21 +27,21 @@ Wellness by Dr.Sophia - Treatment
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="image">
-                                    <img src="{{'/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
+                                    <img src="{{'https://demo.optimizedbodyandmind.co.uk/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="image">
-                                    <img src="{{'/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
+                                    <img src="{{'https://demo.optimizedbodyandmind.co.uk/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                <img src="{{'/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
+                                <img src="{{'https://demo.optimizedbodyandmind.co.uk/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
                             </button>
                             <button type="button" data-bs-target="#product-slider" data-bs-slide-to="1" aria-label="Slide 2">
-                                <img src="{{'/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
+                                <img src="{{'https://demo.optimizedbodyandmind.co.uk/storage/'.($thisTreatment->image)}}" class="d-block w-100" alt="{{$thisTreatment->slug}}">
                             </button>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ Wellness by Dr.Sophia - Treatment
                     <div class="row">
                         <div class="col-md-12">
                             {!!$thisTreatment->description!!}
-                            <a href="/add-to-cart/{{$thisTreatment->id}}" data-id="{{$thisTreatment->id}}" data-key="{{$thisTreatment->ref_key}}" class="btn btn-cart w-100">Add to cart</a>
+                            <a id="add-to-cart-button" data-id="{{$thisTreatment->id}}" data-key="{{$thisTreatment->ref_key}}" class="btn btn-cart w-100">Add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -78,5 +78,42 @@ Wellness by Dr.Sophia - Treatment
 @endsection
 
 @section('javascript')
+<script>
+     $(document).ready(function() {
+        $("#add-to-cart-button").click(function(e) {
+            e.preventDefault(); // Prevent the default click behavior of the anchor tag
 
+            var id = $(this).data('id');
+            var key = $(this).data('key');
+
+            $.ajax({
+                type: 'GET', // You can change this to 'GET' if your route accepts GET requests
+                url: '/add-to-cart/' + id,
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Please wait while we process your order...',
+                        html: '<div class="text-center"><i class="fa fa-spinner fa-spin"></i></div>',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+                },
+                data: {
+                    id: id,
+                    key: key
+                },
+                success: function(response) {
+                    if (response.redirect) {
+                        // Redirect to the specified URL
+                        window.location.href = response.redirect;
+                    } else {
+                        // Handle the success response here, e.g., update the UI
+                    }
+                }
+            });
+        });
+    });
+</script>
 @endsection

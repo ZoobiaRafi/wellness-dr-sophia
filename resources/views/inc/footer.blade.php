@@ -23,7 +23,7 @@
                         <div class="col-1 align-items-center justify-content-middle "><i class="fa-solid fa-phone" style="color:#fff; margin-right: 1rem;vertical-align: middle;font-size: 1rem;"></i>
                         </div>
                         <div class="col-11">
-                            <a href="tel:+4407960906330" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
+                            <a href="tel:+447960906330" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
                                     line-height: normal;">+44 (0) 7960906330</a>
                         </div>
                     </div>
@@ -67,13 +67,13 @@
                         </a>
                         <br>
                         @endforeach
-                        <a style="color: #fff!important;" href="packages.html">
+                        <!-- <a style="color: #fff!important;" href="packages.html">
                             Packages & Promotions
-                        </a>
+                        </a> -->
                         <br>
                     </p>
                 </div>
-                <div class="col-lg-3 col-md-6 footer-links">
+                <!-- <div class="col-lg-3 col-md-6 footer-links">
                     <h4 style="margin-top:-3rem;padding-left: 0rem">Opening Hours</h4>
                     <p style=" padding-left: 0rem; ">
                         <a style="color: #fff!important;">
@@ -94,10 +94,9 @@
                         </div>
                     </form>
                     </p>
-                </div>
-                <div class="col-lg-4 col-md-6 footer-links">
-                    <h4 style="margin-top:1rem;">Follow Us : </h4>
-
+                </div> -->
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4 style="margin-top:-3rem;padding-left: 0rem">Follow Us : </h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/wellnessbydrsophia" target="_blank" class="facebook">
                             <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +137,6 @@
             </div>
         </div>
     </div>
-
     <!-- footer Mobile -->
     <div class="footer-top d-block d-lg-none" style="padding-left: 35px;padding-right: 35px;">
         <div class="container">

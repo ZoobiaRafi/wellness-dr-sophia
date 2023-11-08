@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-Wellness by Dr.Sophia - Our Services
+Wellness by Dr.Sophia - Our Services - {{$thisService->banner_title}}
 @endsection
 
 @section('css')
@@ -63,7 +63,7 @@ Wellness by Dr.Sophia - Our Services
                         </div>
                         <div class="card-body row">
                             <div class="title-price col-7 col-md-7 col-sm-7 col-lg-7">
-                                <h5>{{$t->title}}</h5>
+                                <h5><a href="{{url('/treatments/services/'.$t->slug)}}">{{$t->title}}</a></h5>
                                 <div class="stars">
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
@@ -84,7 +84,7 @@ Wellness by Dr.Sophia - Our Services
                                 <a href="{{url('/treatments/services/'.$t->slug)}}" class="view-more">View more</a>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12 col-12 buttons">
-                                <a href="/add-to-cart/{{$t->id}}" data-id="{{$t->id}}" data-key="{{$t->ref_key}}" class="btn btn-secondary btn_add_to_cart btn-add-to-cart w-100">Add to cart</a>
+                                <a data-id="{{$t->id}}" data-key="{{$t->ref_key}}" class="btn btn-secondary add-to-cart-button btn_add_to_cart btn-add-to-cart w-100">Add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -393,8 +393,42 @@ Wellness by Dr.Sophia - Our Services
 @section('javascript')
 <script>
     $(document).ready(function() {
+        $(".add-to-cart-button").click(function(e) {
+            e.preventDefault(); // Prevent the default click behavior of the anchor tag
 
+            var id = $(this).data('id');
+            var key = $(this).data('key');
+
+            $.ajax({
+                type: 'GET', // You can change this to 'GET' if your route accepts GET requests
+                url: '/add-to-cart/' + id,
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Please wait while we process your order...',
+                        html: '<div class="text-center"><i class="fa fa-spinner fa-spin"></i></div>',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+                },
+                data: {
+                    id: id,
+                    key: key
+                },
+                success: function(response) {
+                    if (response.redirect) {
+                        // Redirect to the specified URL
+                        window.location.href = response.redirect;
+                    } else {
+                        // Handle the success response here, e.g., update the UI
+                    }
+                }
+            });
+        });
     });
+
 
     function toggleMoreServices() {
         var moreServicesDiv = document.querySelector('.more-services');
