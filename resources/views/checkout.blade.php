@@ -1,6 +1,15 @@
 @extends('layouts/master')
 
+
 @section('metas')
+<meta name="description" content="Review and finalize your selections in your cart at Sophia's Clinic. Secure and easy booking for our treatments and services. Ready for checkout">
+<meta name="keywords" content="Sophia's Clinic Cart, Treatment Booking Cart, Checkout Wellness Services, Easy Booking Process, Secure Checkout System, Finalize Treatment Selection, Cart for Aesthetic Services, Ready for Checkout, Complete Your Booking, Clinic Service Cart">
+<meta property="og:title" content="Your Cart at Sophia's Clinic - Finalize Your Selection">
+<meta property="og:description" content="Review and finalize your selections in your cart at Sophia's Clinic. Secure and easy booking for our treatments and services. Ready for checkout">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Cart at Sophia's Clinic - Finalize Your Selection">
+<meta name="twitter:description" content="Review and finalize your selections in your cart at Sophia's Clinic. Secure and easy booking for our treatments and services. Ready for checkout">
 @endsection
 
 @section('title')

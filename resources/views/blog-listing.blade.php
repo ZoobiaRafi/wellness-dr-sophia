@@ -1,6 +1,14 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="Gain invaluable insights from Dr. Sophia's Wellness Clinic. Our Experts Advice page offers tips and guidance on achieving optimal health and beauty.">
+<meta name="keywords" content="Wellness Expert Advice, Beauty Tips by Professionals, Dr. Sophia's Health Guidance, Expert Beauty Insights, Professional Wellness Tips, Health and Beauty Guidance, Clinic's Expert Recommendations, Aesthetic and Health Advice, Skincare Expert Tips, Wellness and Beauty Insights">
+<meta property="og:title" content="Expert Advice on Wellness & Beauty - Dr. Sophia's Clinic">
+<meta property="og:description" content="Gain invaluable insights from Dr. Sophia's Wellness Clinic. Our Experts Advice page offers tips and guidance on achieving optimal health and beauty.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Expert Advice on Wellness & Beauty - Dr. Sophia's Clinic">
+<meta name="twitter:description" content="Gain invaluable insights from Dr. Sophia's Wellness Clinic. Our Experts Advice page offers tips and guidance on achieving optimal health and beauty.">
 @endsection
 
 @section('title')

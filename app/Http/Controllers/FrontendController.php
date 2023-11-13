@@ -330,27 +330,16 @@ class FrontendController extends Controller
         $NewApp->appointment_time = $request->bookingstarttime . "-" .$request->bookingendtime;
         $NewApp->save();
 
-        if($request->id == 0){
-            if (setting('take-payment.status') == "1") {
-                return response()->json([
-                    "status" => "success",
-                    "redirect" => 'checkout/payment-proceed/' . $Order->id . '?is_booking=0',
-                    "message" => "Please wait. We are processing your order",
-                ]);
-            }
+        dispatch(new NewOrderEmailJob($Order->id, $request->email, "customer"));
+        $NotificationEmails = explode(",",env("NOTIFICATION_EMAILS"));
+        foreach($NotificationEmails as $NE) {
+            dispatch(new NewOrderEmailJob($Order->id, $NE, "admin"));
         }
-        else{
-            dispatch(new NewOrderEmailJob($Order->id, $request->email, "customer"));
-            $NotificationEmails = explode(",",env("NOTIFICATION_EMAILS"));
-            foreach($NotificationEmails as $NE) {
-                dispatch(new NewOrderEmailJob($Order->id, $NE, "admin"));
-            }
-            return response()->json([
-                "status" => "success",
-                "redirect" => 'checkout/success?is_booking=' . $request->id . '&no=' . $Order->id,
-                "message" => "Please wait we are proccessing your order",
-            ]);
-        }
+        return response()->json([
+            "status" => "success",
+            "redirect" => 'checkout/success?no=' . $Order->id. '&is_booking=' . 1,
+            "message" => "Please wait we are proccessing your order",
+        ]);
     }
     public function check_avalibilty(Request $request)
     {

@@ -1,6 +1,14 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="Read the Terms and Conditions of Wellness by Dr. Sophia's Clinic. Understand our policies and guidelines for aesthetic and wellness services in Luton.">
+<meta name="keywords" content="Wellness Clinic Terms London, Aesthetic Services Policies, Health Clinic Conditions, London Medical Clinic Guidelines, Legal Wellness Terms, Aesthetic Clinic User Agreement, Health Service Policies London, Clinic Terms and Conditions, Patient Care Terms, Medical Wellness Legalities">
+<meta property="og:title" content="Terms and Conditions - Wellness by Dr. Sophia's Clinic">
+<meta property="og:description" content="Read the Terms and Conditions of Wellness by Dr. Sophia's Clinic. Understand our policies and guidelines for aesthetic and wellness services in Luton.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Terms and Conditions - Wellness by Dr. Sophia's Clinic">
+<meta name="twitter:description" content="Read the Terms and Conditions of Wellness by Dr. Sophia's Clinic. Understand our policies and guidelines for aesthetic and wellness services in Luton.">
 @endsection
 
 @section('title')

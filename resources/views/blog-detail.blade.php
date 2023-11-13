@@ -1,6 +1,14 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="@if($thisBlog->meta_description){$thisBlog->meta_description}}@endif">
+<meta name="keywords" content="@if($thisBlog->meta_keywords){{$thisBlog->meta_keywords}}@endif">
+<meta property="og:title" content="@if($thisBlog->meta_title){{$thisBlog->meta_title}}@endif">
+<meta property="og:description" content="@if($thisBlog->meta_description){$thisBlog->meta_description}}@endif">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="@if($thisBlog->meta_title){{$thisBlog->meta_title}}@endif">
+<meta name="twitter:description" content="@if($thisBlog->meta_description){$thisBlog->meta_description}}@endif">
 @endsection
 
 @section('title')

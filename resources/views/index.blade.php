@@ -1,11 +1,17 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="Explore leading aesthetic treatments and wellness care at Dr. Sophia's Clinic, your destination for beauty, health, and advanced skincare in Luton.">
+    <meta name="keywords" content="London Aesthetics Clinic, Wellness Clinic London, Aesthetic Beauty Clinic, Skin Aesthetic Clinic, Medical Aesthetic Clinic, Health & Aesthetics Clinic, Advanced Aesthetics, Aesthetic Self Care, Aesthetic and Cosmetic Surgery, Wellness and Beauty Clinic">
+    <meta property="og:title" content="Dr. Sophia's Wellness Clinic - Aesthetic & Health Expertise">
+    <meta property="og:description" content="Explore leading aesthetic treatments and wellness care at Dr. Sophia's Clinic, your destination for beauty, health, and advanced skincare in Luton.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dr. Sophia's Wellness Clinic - Aesthetic & Health Expertise">
+    <meta name="twitter:description" content="Explore leading aesthetic treatments and wellness care at Dr. Sophia's Clinic, your destination for beauty, health, and advanced skincare in Luton.">
 @endsection
 
-@section('title')
-Wellness by Dr.Sophia - Home
-@endsection
+@section('title') Wellness by Dr.Sophia - Home @endsection
 
 @section('css')
 <style>

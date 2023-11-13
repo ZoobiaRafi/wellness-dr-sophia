@@ -1,6 +1,14 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="Book a GP consultation at Dr. Sophia's Wellness Clinic for professional healthcare advice. Expert general practitioners for your health needs.">
+<meta name="keywords" content="GP Consultation Services, Wellness Clinic GP, General Practitioner Healthcare, Dr. Sophia Health Consultation, Professional Medical Advice, Health Consultation Services, Primary Care Wellness, Expert Healthcare London, Medical Health Consultation, General Health Services">
+<meta property="og:title" content="Expert GP Consultation at Dr. Sophia's Wellness Clinic">
+<meta property="og:description" content="Book a GP consultation at Dr. Sophia's Wellness Clinic for professional healthcare advice. Expert general practitioners for your health needs.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Expert GP Consultation at Dr. Sophia's Wellness Clinic">
+<meta name="twitter:description" content="Book a GP consultation at Dr. Sophia's Wellness Clinic for professional healthcare advice. Expert general practitioners for your health needs.">
 @endsection
 
 @section('title')

@@ -4,6 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="SHo4r7c3GDAml56fT3lE1Mzj2OQg2UK8kNrHDoIEM14" />
+    <meta name="twitter:domain" content="{{ request()->url() }}">
+    <meta property="og:site_name" content="Wellness by Dr. Sophia">
+    <!-- <meta name="twitter:image" content="demo.optimizedbodyandmind.co.uk/assets/img_new/main.webp">
+    <meta property="og:image" content="demo.optimizedbodyandmind.co.uk/assets/img_new/main.webp"> -->
+    <meta name="twitter:image" content="/assets/images/logos/main.webp">
+    <meta property="og:image" content="/assets/images/logos/main.webp">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logos/16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logos/32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/logos/57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/logos/60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/logos/72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/logos/76x76.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logos/96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/logos/114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/logos/120x120.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="/assets/images/logos/128x128.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/logos/152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logos/180x180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/images/logos/192x192.png">
+    <link rel="icon" type="image/png" sizes="230x230" href="/assets/images/logos/230x230.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/images/logos/256x256.png">
 
     @yield('metas')
     <link data-n-head="ssr" data-hid="canonical" rel="canonical" href="{{ request()->url() }}">

@@ -1,6 +1,14 @@
 @extends('layouts/master')
 
 @section('metas')
+<meta name="description" content="Explore our Beauty Gallery at Dr. Sophia's Wellness Clinic. Witness stunning transformations and the art of aesthetic beauty through our treatments.">
+<meta name="keywords" content="Beauty Gallery Aesthetics, Aesthetic Transformations, Dr. Sophia's Beauty Results, Skincare Gallery, Wellness Clinic Transformations, Aesthetic Beauty Showcase, Clinic Before and After, Beauty Treatment Gallery, Visual Beauty Results, Art of Aesthetics">
+<meta property="og:title" content="Beauty Gallery - See Transformations at Dr. Sophia's Clinic">
+<meta property="og:description" content="Explore our Beauty Gallery at Dr. Sophia's Wellness Clinic. Witness stunning transformations and the art of aesthetic beauty through our treatments.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beauty Gallery - See Transformations at Dr. Sophia's Clinic">
+<meta name="twitter:description" content="Explore our Beauty Gallery at Dr. Sophia's Wellness Clinic. Witness stunning transformations and the art of aesthetic beauty through our treatments.">
 @endsection
 
 @section('title')
