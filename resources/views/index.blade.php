@@ -153,7 +153,7 @@ Wellness by Dr.Sophia - Home
                     <div class="image-overlay">
                         <img src="/assets/images/video2.webp" class="img-fluid w-100" alt="video">
                         <div class="play-button">
-                            <a href="#"><i class="fa-solid fa-circle-play"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#videoModal"><i class="fa-solid fa-circle-play"></i></a>
                         </div>
                     </div>
                 </div>
@@ -723,6 +723,21 @@ Wellness by Dr.Sophia - Home
         </div>
     </section>
 
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="plyr__video-embed" id="youtube-player">
+                        <iframe src="https://www.youtube.com/embed/DiZMwbMsz8k?si=2tV0s12TgDYk4eXT&autoplay=1" 
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                            encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>
 @endsection
