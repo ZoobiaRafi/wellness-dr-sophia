@@ -16,15 +16,16 @@
                         </div>
                         <div class="col-11">
                             <a style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
-                                    line-height: normal;">Oakley Surgery, Addington Way, Luton,<br> LU4 9FJS</a>
+                                    line-height: normal;">{{ setting('contact.address_1') }} <br> {{ setting('contact.address_2') }},
+                                {{ setting('contact.city') }}, {{ setting('contact.postal_code') }}</a>
                         </div>
                     </div>
                     <div class="row d-flex py-1">
                         <div class="col-1 align-items-center justify-content-middle "><i class="fa-solid fa-phone" style="color:#fff; margin-right: 1rem;vertical-align: middle;font-size: 1rem;"></i>
                         </div>
                         <div class="col-11">
-                            <a href="tel:+447960906330" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
-                                    line-height: normal;">+44 (0) 7960906330</a>
+                            <a href="tel:{{ setting('contact.phone') }}" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
+                                    line-height: normal;">{{ setting('contact.phone') }}</a>
                         </div>
                     </div>
                     <div class="row d-flex py-1">
@@ -204,7 +205,7 @@
                                         </div>
                                         <div class="col-11">
                                             <a style="padding:0;color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
-                                                        line-height: normal;">Oakley Surgery, Addington Way, Luton,LU4 9FJS</a>
+                                                line-height: normal;">{{ setting('contact.address_1') }} {{ setting('contact.address_2') }}, {{ setting('contact.city') }}, {{ setting('contact.postal_code') }}</a>
                                         </div>
                                     </div>
                                     </p>
@@ -213,8 +214,8 @@
                                         <div class="col-1 align-items-center justify-content-middle "><i class="fa-solid fa-phone" style="color:#fff; margin-right: 1rem;vertical-align: middle;font-size: 1rem;"></i>
                                         </div>
                                         <div class="col-11">
-                                            <a href="tel:+4407960906330" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
-                                                        line-height: normal;">+44 (0) 7960906330</a>
+                                            <a href="tel:{{ setting('contact.phone') }}" style="color: #FFF; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500;
+                                                        line-height: normal;">{{ setting('contact.phone') }}</a>
                                         </div>
                                     </div>
                                     </p>

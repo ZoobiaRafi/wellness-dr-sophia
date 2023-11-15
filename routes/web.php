@@ -41,7 +41,7 @@ Route::get('/checkout/success/{oid}', [FrontendController::class, 'checkout_succ
 Route::get('checkout/success', [FrontendController::class, 'checkout_success_final'])->name('checkout.success.final');
 
 
-// Route::group(['prefix' => 'admin'], function () {
-//     Voyager::routes();
-// });
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 
